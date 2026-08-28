@@ -1,0 +1,50 @@
+/* UNACEM North America — base element defaults. Deliberately thin. */
+
+*,*::before,*::after{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:var(--surface-page);
+  color:var(--text-body);
+  font-family:var(--font-body);
+  font-size:var(--text-md);
+  line-height:var(--body-leading);
+  -webkit-font-smoothing:antialiased;
+  text-wrap:pretty;
+}
+
+h1,h2,h3,h4{
+  font-family:var(--font-display);
+  font-weight:400;
+  text-transform:uppercase;
+  line-height:var(--display-leading);
+  letter-spacing:var(--display-tracking);
+  color:var(--text-heading);
+  margin:0 0 var(--space-4);
+  text-wrap:balance;
+}
+h1{font-size:var(--display-1)}
+h2{font-size:var(--display-2)}
+h3{font-size:var(--display-3)}
+h4{font-size:var(--display-4)}
+
+h5,h6{font-family:var(--font-body);font-weight:var(--weight-bold);text-transform:uppercase;letter-spacing:var(--eyebrow-tracking);font-size:var(--eyebrow-size);margin:0 0 var(--space-2)}
+
+p{margin:0 0 var(--space-3);max-width:var(--measure)}
+
+a{color:var(--text-accent);text-decoration:none;border-bottom:var(--border-width) solid currentColor;transition:color var(--duration-fast) var(--ease-standard)}
+a:hover{color:var(--interactive-hover)}
+a:active{color:var(--interactive-press)}
+a:focus-visible{outline:var(--border-width-strong) solid var(--focus-ring);outline-offset:3px}
+
+hr{border:0;border-top:var(--rule-width) solid var(--border-default);margin:var(--space-6) 0}
+
+img,svg,video{max-width:100%;border-radius:var(--radius-none)}
+
+strong{font-weight:var(--weight-bold)}
+
+:focus-visible{outline:var(--border-width-strong) solid var(--focus-ring);outline-offset:2px}
+
+button,input,select,textarea{font:inherit;border-radius:var(--radius-none)}
+
+::selection{background:var(--unacem-red);color:var(--unacem-white)}

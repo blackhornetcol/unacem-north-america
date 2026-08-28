@@ -1,0 +1,23 @@
+/* UNACEM North America — motion.
+   The brand's only defined motion is the logo build and the reel closing: the
+   isotype's line paths draw upward, then the wordmark appears. Everything else
+   should read as construction — things RISE and are REVEALED, they never bounce,
+   spring, or slide sideways. */
+
+:root{
+  --ease-standard:cubic-bezier(0.22,0.61,0.36,1); /* @kind other */   /* ease-out, decisive */
+  --ease-in:cubic-bezier(0.55,0.06,0.68,0.19); /* @kind other */
+  --ease-linear:linear; /* @kind other */                              /* line draws / wipes */
+  --duration-instant:80ms; /* @kind other */
+  --duration-fast:160ms; /* @kind other */                             /* hover, press */
+  --duration-base:280ms; /* @kind other */                             /* reveals, state change */
+  --duration-slow:560ms; /* @kind other */                             /* display type rise */
+  --duration-build:1400ms; /* @kind other */                           /* logo / skyline build */
+  --stagger:70ms; /* @kind other */                                    /* per skyline column */
+}
+
+@media (prefers-reduced-motion:no-preference){
+  @keyframes unacem-rise{from{transform:translateY(0.28em);opacity:0}to{transform:none;opacity:1}}
+  @keyframes unacem-wipe-up{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0 0 0 0)}}
+  @keyframes unacem-draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+}

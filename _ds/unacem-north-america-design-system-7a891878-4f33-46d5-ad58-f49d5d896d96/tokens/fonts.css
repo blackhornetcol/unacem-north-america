@@ -1,0 +1,17 @@
+/* UNACEM North America — webfonts.
+   Chaney: display. UPPERCASE ONLY (the family has no lowercase glyphs).
+   Silka: body. ONLY Silka-Regular.otf was supplied — Light / Bold / Black are
+   missing, so 300/700/900 are browser-synthesised. Ask the client for the
+   remaining four .otf files; see readme.md "Font gaps".
+   Baro Line Two: numerals & symbols ONLY, never words. */
+
+@font-face{font-family:"Chaney";src:url("../assets/fonts/chaney-regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Chaney Wide";src:url("../assets/fonts/chaney-wide.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Chaney Extended";src:url("../assets/fonts/chaney-extended.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Chaney Ultraextended";src:url("../assets/fonts/chaney-ultraextended.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+
+@font-face{font-family:"Silka";src:url("../assets/fonts/silka-regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+
+@font-face{font-family:"Baro Line Two";src:url("../assets/fonts/baro-linetwo.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Baro Line One";src:url("../assets/fonts/baro-lineone.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Baro Plain";src:url("../assets/fonts/baro-plain.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}

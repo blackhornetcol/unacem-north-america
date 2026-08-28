@@ -1,0 +1,30 @@
+/* UNACEM North America — geometry.
+   Zero radius everywhere. The only curve in the brand lives inside the isotype's
+   concentric arcs; it is never borrowed by a card, button, input or image crop.
+   No soft shadows either — separation is done with flat blocks and hairlines. */
+
+:root{
+  --radius-none:0px;
+  --radius:0px;          /* alias, so a consumer writing var(--radius) still gets 0 */
+  --radius-pill:0px;
+
+  --border-width:1px;
+  --border-width-strong:2px;
+  --rule-width:1px;      /* thin single-colour divider */
+  --rule-width-heavy:4px;/* red emphasis rule under a display line */
+  --bar-width:8px;       /* solid red/black marker bar */
+
+  --shadow-none:none;
+  --shadow:none;         /* alias — intentionally none, do not introduce shadows */
+
+  /* Skyline "edifications" device: assets/graphics/edifications-*.svg.
+     Always upright, never overlapped, never mixed or tilted. */
+  --edifications-aspect:797.69 / 587.02; /* @kind other */
+
+  /* Isotype geometry from the brandbook construction page (unit X). */
+  --isotype-aspect:306.16 / 352.67; /* @kind other */
+  --logo-horizontal-aspect:654.18 / 253.17; /* @kind other */
+  --logo-vertical-aspect:244.37 / 382.81; /* @kind other */
+  --logo-min-width:22px;              /* 0.80 cm minimum reproduction size */
+  --isotype-min-width:16px;           /* 0.50 cm */
+}

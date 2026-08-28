@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/unacem-north-america-design-system-7a891878-4f33-46d5-ad58-f49d5d896d96/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/unacem-north-america-design-system-7a891878-4f33-46d5-ad58-f49d5d896d96/tokens/colors.css">
+<link rel="stylesheet" href="_ds/unacem-north-america-design-system-7a891878-4f33-46d5-ad58-f49d5d896d96/tokens/typography.css">
+<link rel="stylesheet" href="_ds/unacem-north-america-design-system-7a891878-4f33-46d5-ad58-f49d5d896d96/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/unacem-north-america-design-system-7a891878-4f33-46d5-ad58-f49d5d896d96/tokens/geometry.css">
+<link rel="stylesheet" href="_ds/unacem-north-america-design-system-7a891878-4f33-46d5-ad58-f49d5d896d96/tokens/motion.css">
+<link rel="stylesheet" href="_ds/unacem-north-america-design-system-7a891878-4f33-46d5-ad58-f49d5d896d96/tokens/base.css">
+<link rel="stylesheet" href="_ds/unacem-north-america-design-system-7a891878-4f33-46d5-ad58-f49d5d896d96/styles.css">
+<script src="_ds/unacem-north-america-design-system-7a891878-4f33-46d5-ad58-f49d5d896d96/_ds_bundle.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#000;font-family:var(--font-body);-webkit-font-smoothing:antialiased}
+a{color:#000;text-decoration:none}
+a:hover{color:var(--unacem-red)}
+::selection{background:var(--unacem-red);color:#fff}
+@keyframes u-rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes u-wipe{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes u-draw{from{stroke-dashoffset:2400}to{stroke-dashoffset:0}}
+@keyframes u-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes u-sky{to{transform:translateY(-13vh) scale(1.06)}}
+@keyframes u-type{to{transform:translateY(-7vh);opacity:0}}
+@keyframes u-dolly{to{transform:scale(1.035)}}
+@keyframes u-cue{to{opacity:0;transform:translateY(20px)}}
+@keyframes u-line{to{transform:translateX(0)}}
+input[type="search"]::placeholder{color:rgba(255,255,255,0.72)}
+@keyframes u-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes u-arrow{0%,100%{transform:translateY(0);opacity:1}50%{transform:translateY(5px);opacity:0.45}}
+@keyframes u-glow{0%,100%{background:transparent}10%{background:rgba(255,0,0,0.09)}26%{background:transparent}}
+@keyframes u-cols{from{mask-size:0% 100%}to{mask-size:100% 100%}}
+@keyframes u-flow{to{stroke-dashoffset:-96}}
+@keyframes u-node{0%,100%{r:9}50%{r:13}}
+main h1,main h2,main h3,footer h2{animation:u-rise 760ms cubic-bezier(0.22,1,0.36,1) both;animation-timeline:view();animation-range:entry 4% entry 58%}
+[data-scrollbarless]::-webkit-scrollbar{height:0;width:0}
+@media (prefers-reduced-motion: reduce){
+  *{animation:none !important;transition:none !important}
+  [data-pin]{height:100vh !important}
+  html{scroll-behavior:auto}
+}
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:#fff;overflow-x:clip">
+
+<nav style="position:fixed;top:22px;left:0;right:0;z-index:90;display:flex;justify-content:center;gap:12px;pointer-events:none;font-family:var(--font-body)">
+  <a href="#/" aria-label="UNACEM North America — home" style="pointer-events:auto;width:52px;height:52px;background:rgba(255,255,255,0.66);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);border:1px solid rgba(255,255,255,0.6);display:flex;align-items:center;justify-content:center" style-hover="border-color:#000">
+    <img src="assets/logos/isotype-red.svg" alt="" style="width:26px;height:26px;display:block">
+  </a>
+  <div style="pointer-events:auto;height:52px;background:rgba(255,255,255,0.66);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);border:1px solid rgba(255,255,255,0.6);display:flex;align-items:stretch;padding:0 8px;gap:2px">
+    <sc-for list="{{ nav }}" as="n" hint-placeholder-count="4">
+      <a href="{{ n.href }}" style="display:flex;align-items:center;padding:0 18px;font-size:13px;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;position:relative;color:{{ n.color }}">
+        {{ n.label }}
+        <span style="position:absolute;left:18px;right:18px;bottom:14px;height:2px;background:var(--unacem-red);transform:{{ n.underline }};transform-origin:left;transition:transform 160ms var(--ease-standard)"></span>
+      </a>
+    </sc-for>
+    <a href="https://unacem-na.com/contact-us/" target="_blank" rel="noopener" style="display:flex;align-items:center;margin:8px 0 8px 10px;padding:0 20px;border:1px solid var(--unacem-red);color:var(--unacem-red);font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;transition:background 160ms var(--ease-standard),color 160ms var(--ease-standard)" style-hover="background:var(--unacem-red);color:#fff">Contact</a>
+  </div>
+</nav>
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<main>
+
+  <section data-pin="true" data-screen-label="Home hero" style="height:168vh;position:relative;background:#000">
+    <div style="position:sticky;top:0;height:100vh;overflow:hidden">
+      <video src="assets/video/hero-plant.mp4" poster="assets/photography/plant-aerial-web.jpg" autoplay="" muted="" loop="" playsinline="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:u-sky linear both;animation-timeline:scroll(root block);animation-range:0 160vh"></video>
+      <div style="position:absolute;inset:0;background:rgba(0,0,0,0.26)"></div>
+
+      <div style="position:absolute;inset:0;padding:0 80px;display:flex;flex-direction:column;justify-content:center;transform:translateY(-4vh);animation:u-type linear both;animation-timeline:scroll(root block);animation-range:0 150vh">
+        <p style="margin:0 0 28px;font-family:var(--font-body);font-weight:700;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:#fff;animation:u-rise 700ms cubic-bezier(0.22,1,0.36,1) 200ms both">UNACEM North America · The Southwest</p>
+        <h1 style="margin:0;font-family:var(--font-display);font-weight:400;text-transform:uppercase;line-height:0.9;letter-spacing:0.005em;font-size:clamp(40px,5.6vw,96px);color:#fff;animation:none">
+          <span style="display:block;white-space:nowrap;animation:u-wipe 800ms cubic-bezier(0.22,1,0.36,1) 340ms both">Together</span>
+          <span style="display:block;white-space:nowrap;animation:u-wipe 800ms cubic-bezier(0.22,1,0.36,1) 440ms both">We grow</span>
+          <span style="display:block;white-space:nowrap;animation:u-wipe 800ms cubic-bezier(0.22,1,0.36,1) 540ms both">To build a</span>
+          <span style="display:block;white-space:nowrap;color:var(--unacem-red);animation:u-wipe 800ms cubic-bezier(0.22,1,0.36,1) 640ms both">Sustainable world</span>
+        </h1>
+      </div>
+
+      <video src="assets/video/hero-cutout.mp4" poster="assets/photography/plant-aerial-web.jpg" autoplay="" muted="" loop="" playsinline="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;mask-image:linear-gradient(to bottom,transparent 0 66%,#000 72%,#000 100%);-webkit-mask-image:linear-gradient(to bottom,transparent 0 66%,#000 72%,#000 100%);animation:u-dolly linear both;animation-timeline:scroll(root block);animation-range:0 160vh"></video>
+
+      <svg viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none">
+        <path d="M -20 640 H 300 L 392 548 H 812 L 904 456 H 1460" fill="none" stroke="#FF0000" stroke-width="3" stroke-dasharray="2400" style="animation:u-draw 1500ms linear 500ms both"></path>
+      </svg>
+
+      <div style="position:absolute;left:80px;right:80px;bottom:56px;display:flex;align-items:flex-end;justify-content:space-between;gap:40px;animation:u-cue linear both;animation-timeline:scroll(root block);animation-range:0 90vh">
+        <div style="display:flex;gap:14px;align-items:center">
+          <a href="#products" style="display:flex;align-items:center;height:52px;padding:0 26px;animation:u-bob 4.6s ease-in-out infinite;background:var(--unacem-red);color:#fff;font-size:15px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;transition:background 160ms var(--ease-standard)" style-hover="background:#D60000;color:#fff">Explore our materials →</a>
+          <a href="#footprint" style="display:flex;align-items:center;height:52px;padding:0 26px;animation:u-bob 4.6s ease-in-out infinite;border:1px solid rgba(255,255,255,0.55);color:#fff;font-size:15px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;transition:border-color 160ms,background 160ms" style-hover="border-color:#fff;background:rgba(255,255,255,0.1);color:#fff">Our footprint</a>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:12px">
+          <span style="font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#fff">Scroll to build</span>
+          <span style="display:block;width:2px;height:64px;background:var(--unacem-red)"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="products" data-screen-label="Product gateway" style="padding:150px 80px 160px;background:#fff">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:64px;margin-bottom:72px">
+      <div style="max-width:760px">
+        <p style="margin:0 0 24px;font-family:var(--font-numeral);font-size:12px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--unacem-red)">01 · Materials</p>
+        <h2 style="margin:0;font-family:var(--font-display);text-transform:uppercase;line-height:0.92;letter-spacing:0.005em;font-size:clamp(34px,4.4vw,72px);animation:u-rise 700ms cubic-bezier(0.22,1,0.36,1) both;animation-timeline:view();animation-range:entry 5% entry 55%">Four materials.<br>One reliable<br>regional network.</h2>
+      </div>
+      <p style="margin:0;max-width:420px;font-size:17px;line-height:1.55;color:rgba(0,0,0,0.72);text-wrap:pretty">Cement, ready mix concrete, aggregates, and pozzolan—delivered where you need them. UNACEM North America supports commercial, infrastructure, and industrial construction across the Southwest with consistent quality, reliable supply, and technical expertise.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:7fr 5fr;gap:1px;background:var(--hairline)">
+      <article style="grid-column:1;background:#fff;padding:40px;display:flex;flex-direction:column;gap:28px" style-hover="background:#fff">
+        <div style="aspect-ratio:16/10;overflow:hidden;background:#F1F0ED">
+          <video src="assets/video/cement.mp4" autoplay="" muted="" loop="" playsinline="" style="width:100%;height:100%;object-fit:cover;animation:u-float 7s ease-in-out infinite" style-hover="animation-play-state:paused"></video>
+        </div>
+        <div style="display:flex;gap:32px;align-items:flex-start">
+          <span style="font-family:var(--font-numeral);font-size:15px;color:var(--unacem-red);padding-top:6px">01</span>
+          <div>
+            <h3 style="margin:0 0 14px;font-family:var(--font-display);text-transform:uppercase;font-size:34px;line-height:0.94">Cement</h3>
+            <p style="margin:0 0 22px;max-width:52ch;font-size:16px;line-height:1.55;color:rgba(0,0,0,0.7)">High-performance cement—including Types IL, IP, and II/V—for structural concrete, paving, and general construction applications.</p>
+            <a href="#/products/cement" style="font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;border-bottom:2px solid var(--unacem-red);padding-bottom:4px">Explore cement →</a>
+          </div>
+        </div>
+      </article>
+
+      <article style="grid-column:2;background:#000;padding:40px;display:flex;flex-direction:column;gap:28px;color:#fff">
+        <div style="aspect-ratio:16/10;overflow:hidden;background:#000">
+          <video src="assets/video/pozzolan.mp4" autoplay="" muted="" loop="" playsinline="" style="width:100%;height:100%;object-fit:cover;animation:u-float 8s ease-in-out infinite" style-hover="animation-play-state:paused"></video>
+        </div>
+        <div style="display:flex;gap:32px;align-items:flex-start">
+          <span style="font-family:var(--font-numeral);font-size:15px;color:var(--unacem-red);padding-top:6px">02</span>
+          <div>
+            <h3 style="margin:0 0 14px;font-family:var(--font-display);text-transform:uppercase;font-size:34px;line-height:0.94;color:#fff">Pozzolan</h3>
+            <p style="margin:0 0 22px;font-size:16px;line-height:1.55;color:rgba(255,255,255,0.72)">Materials designed to improve durability, performance, and sustainability in concrete mixes.</p>
+            <a href="#/products/pozzolan" style="font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#fff;border-bottom:2px solid var(--unacem-red);padding-bottom:4px">Explore pozzolan →</a>
+          </div>
+        </div>
+      </article>
+
+      <article style="grid-column:1;background:#fff;padding:40px;display:flex;flex-direction:row-reverse;gap:36px;align-items:center">
+        <div style="flex:0 0 52%;min-width:280px;aspect-ratio:16/11;overflow:hidden;background:#F1F0ED">
+          <video src="assets/video/aggregates.mp4" autoplay="" muted="" loop="" playsinline="" style="width:100%;height:100%;object-fit:cover;animation:u-float 9s ease-in-out infinite" style-hover="animation-play-state:paused"></video>
+        </div>
+        <div style="flex:1 1 48%;min-width:0;display:flex;gap:24px;align-items:flex-start">
+          <span style="font-family:var(--font-numeral);font-size:15px;color:var(--unacem-red);padding-top:6px">04</span>
+          <div>
+            <h3 style="margin:0 0 14px;font-family:var(--font-display);text-transform:uppercase;font-size:34px;line-height:0.94">Aggregates</h3>
+            <p style="margin:0 0 22px;font-size:16px;line-height:1.55;color:rgba(0,0,0,0.7)">Crushed rock, sand, and fill dirt supplied for concrete production, grading, and site preparation.</p>
+            <a href="#/products/aggregates" style="font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;border-bottom:2px solid var(--unacem-red);padding-bottom:4px">Explore aggregates →</a>
+          </div>
+        </div>
+      </article>
+
+      <article style="grid-column:2;background:#fff;padding:40px;display:flex;flex-direction:column;gap:28px">
+        <div style="aspect-ratio:16/10;overflow:hidden;background:#F1F0ED">
+          <video src="assets/video/ready-mix.mp4" autoplay="" muted="" loop="" playsinline="" style="width:100%;height:100%;object-fit:cover;animation:u-float 7.5s ease-in-out infinite" style-hover="animation-play-state:paused"></video>
+        </div>
+        <div style="display:flex;gap:24px;align-items:flex-start">
+          <span style="font-family:var(--font-numeral);font-size:15px;color:var(--unacem-red);padding-top:6px">03</span>
+          <div>
+            <h3 style="margin:0 0 14px;font-family:var(--font-display);text-transform:uppercase;font-size:30px;line-height:0.94">Ready mix<br>concrete</h3>
+            <p style="margin:0 0 22px;font-size:16px;line-height:1.55;color:rgba(0,0,0,0.7)">Locally manufactured ready mix concrete, engineered for consistency and on-time delivery to active job sites.</p>
+            <a href="#/products/ready-mix" style="font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;border-bottom:2px solid var(--unacem-red);padding-bottom:4px">Explore ready mix →</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section data-screen-label="Brand statement" style="background:#000;color:#fff;padding:160px 80px;position:relative;overflow:hidden">
+    <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:center">
+      <div>
+        <h2 style="margin:0 0 36px;font-family:var(--font-display);text-transform:uppercase;line-height:0.92;font-size:clamp(34px,4.4vw,68px);color:#fff">Materials that<br>keep projects<br><span style="color:var(--unacem-red)">moving forward.</span></h2>
+        <p style="margin:0;max-width:52ch;font-size:18px;line-height:1.6;color:rgba(255,255,255,0.74)">When your project depends on a reliable supply of high-quality construction materials, UNACEM North America delivers. We help teams stay on schedule and build with confidence from start to finish.</p>
+      </div>
+      <svg viewBox="0 0 520 420" aria-hidden="true" style="width:100%;height:auto">
+        <g fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1">
+          <path d="M40 40 H 240 V 130"></path>
+          <path d="M40 150 H 200 V 210"></path>
+          <path d="M40 260 H 200 V 210"></path>
+          <path d="M40 370 H 240 V 290"></path>
+        </g>
+        <path d="M240 130 H 300 V 210 H 200" fill="none" stroke="#FF0000" stroke-width="2" stroke-dasharray="2400" style="animation:u-draw 1600ms linear both;animation-timeline:view();animation-range:entry 0% cover 40%"></path>
+        <path d="M240 290 H 300 V 210 H 480" fill="none" stroke="#FF0000" stroke-width="2" stroke-dasharray="2400" style="animation:u-draw 1600ms linear both;animation-timeline:view();animation-range:entry 0% cover 40%"></path>
+        <g fill="none" stroke="#FF0000" stroke-width="2.5" stroke-dasharray="6 18" stroke-linecap="square" opacity="0.9">
+          <path d="M40 40 H240 V130 H300 V210 H480" style="animation:u-flow 3.2s linear infinite"></path>
+          <path d="M40 150 H200 V210 H480" style="animation:u-flow 3.2s linear 0.8s infinite"></path>
+          <path d="M40 260 H200 V210 H480" style="animation:u-flow 3.2s linear 1.6s infinite"></path>
+          <path d="M40 370 H240 V290 H300 V210 H480" style="animation:u-flow 3.2s linear 2.4s infinite"></path>
+        </g>
+        <circle cx="480" cy="210" r="9" fill="#FF0000" style="animation:u-node 3s ease-in-out infinite"></circle>
+        <g font-family="var(--font-body)" font-size="11" fill="rgba(255,255,255,0.7)" letter-spacing="2">
+          <text x="40" y="30">CEMENT</text>
+          <text x="40" y="140">POZZOLAN</text>
+          <text x="40" y="284">READY MIX</text>
+          <text x="40" y="394">AGGREGATES</text>
+          <text x="440" y="248" fill="#fff">JOBSITE</text>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section data-screen-label="Company overview" style="padding:150px 80px 0;background:#fff">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start">
+      <div>
+        <p style="margin:0 0 24px;font-family:var(--font-numeral);font-size:12px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--unacem-red)">02 · Who we are</p>
+        <h2 style="margin:0;font-family:var(--font-display);text-transform:uppercase;line-height:0.92;font-size:clamp(34px,4.4vw,68px)">Built on scale.<br>Delivered<br>with trust.</h2>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:26px;padding-top:12px">
+        <p style="margin:0;font-size:18px;line-height:1.6;color:rgba(0,0,0,0.78)">UNACEM North America is a leading building materials provider serving Arizona, Nevada, California, and the broader Southwest. Through advanced cement manufacturing operations and a growing portfolio that includes ready mix concrete and aggregates, UNACEM NA delivers the consistent quality, supply reliability, and technical expertise today’s construction projects demand.</p>
+        <p style="margin:0;font-size:18px;line-height:1.6;color:rgba(0,0,0,0.62)">Innovation and sustainability are core to how we operate. We invest in modern production processes and efficiency-driven systems that reduce environmental impact while improving product performance.</p>
+      </div>
+    </div>
+    <div style="margin-top:96px;height:56vh;overflow:hidden;position:relative">
+      <img src="assets/photography/plant-aerial-web.jpg" alt="The access road leading to a UNACEM North America cement plant in the Southwest desert." style="width:100%;height:100%;object-fit:cover;object-position:50% 60%;animation:u-dolly linear both;animation-timeline:view();animation-range:cover 0% cover 100%">
+      <svg viewBox="0 0 1440 400" preserveAspectRatio="none" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%">
+        <g fill="none" stroke="#FF0000" stroke-width="5" stroke-dasharray="2400" style="animation:u-draw 1800ms linear both;animation-timeline:view();animation-range:entry 20% cover 60%">
+          <path d="M -20 366 L 600 186 L 1460 136"></path>
+          <path d="M -20 394 L 600 214 L 1460 164"></path>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section id="footprint" data-screen-label="Regional footprint" style="padding:150px 80px 160px;background:#fff">
+    <div style="max-width:760px;margin-bottom:64px">
+      <p style="margin:0 0 24px;font-family:var(--font-numeral);font-size:12px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--unacem-red)">Regional footprint</p>
+      <h2 style="margin:0;font-family:var(--font-display);text-transform:uppercase;line-height:0.92;font-size:clamp(34px,4vw,60px)">Three states.<br>One supply network.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:1.35fr 1fr;gap:64px;align-items:center">
+      <svg viewBox="0 0 1000 900" role="img" aria-label="Map of Arizona, California and Nevada showing UNACEM North America operations." style="width:100%;height:auto">
+        <sc-for list="{{ regions }}" as="r" hint-placeholder-count="3">
+          <path d="{{ r.path }}" fill="{{ r.fill }}" stroke="#000" stroke-width="1.5" tabindex="0" role="button" aria-label="{{ r.name }}" onMouseEnter="{{ r.activate }}" onFocus="{{ r.activate }}" onClick="{{ r.activate }}" style="cursor:pointer;transition:fill 200ms var(--ease-standard);outline-offset:3px"></path>
+        </sc-for>
+        <sc-for list="{{ regions }}" as="r" hint-placeholder-count="3">
+          <g>
+            <circle cx="{{ r.cx }}" cy="{{ r.cy }}" r="9" fill="{{ r.nodeFill }}" stroke="#000" stroke-width="2" style="animation:u-node 3.2s ease-in-out infinite"></circle>
+            <text x="{{ r.labelX }}" y="{{ r.labelY }}" font-family="var(--font-body)" font-size="20" font-weight="700" letter-spacing="3" fill="{{ r.textFill }}">{{ r.abbr }}</text>
+          </g>
+        </sc-for>
+        <path d="M 385 562 L 580 477 L 737 583" fill="none" stroke="#FF0000" stroke-width="2.5" stroke-dasharray="2400" style="animation:u-draw 1600ms linear both;animation-timeline:view();animation-range:entry 10% cover 50%"></path>
+      </svg>
+      <div>
+        <div style="aspect-ratio:4/3;background:#F1F0ED;border:1px solid var(--hairline);overflow:hidden;display:flex;align-items:center;justify-content:center;margin-bottom:32px">
+          <sc-if value="{{ region.hasPhoto }}" hint-placeholder-val="{{ true }}">
+            <img src="assets/photography/plant-aerial-web.jpg" alt="UNACEM North America cement operations in the Southwest desert." style="width:100%;height:100%;object-fit:cover">
+          </sc-if>
+          <sc-if value="{{ region.noPhoto }}">
+            <span style="font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:rgba(0,0,0,0.5)">Photo pending</span>
+          </sc-if>
+        </div>
+        <p style="margin:0 0 18px;font-family:var(--font-display);text-transform:uppercase;font-size:30px;line-height:0.94">{{ region.name }}</p>
+        <p style="margin:0 0 24px;font-size:17px;line-height:1.6;color:rgba(0,0,0,0.72)">{{ region.body }}</p>
+        <p style="margin:0;display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;border-left:4px solid var(--unacem-red);padding-left:14px">{{ region.label }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Sustainability" style="padding:150px 80px 160px;background:#F1F0ED">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-bottom:80px">
+      <div>
+        <p style="margin:0 0 24px;font-family:var(--font-numeral);font-size:12px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--unacem-red)">03 · Responsibility</p>
+        <h2 style="margin:0;font-family:var(--font-display);text-transform:uppercase;line-height:0.92;font-size:clamp(34px,4.2vw,64px)">Performance<br>and responsibility<br><span style="color:var(--unacem-red)">move together.</span></h2>
+      </div>
+      <p style="margin:0;align-self:end;font-size:18px;line-height:1.6;color:rgba(0,0,0,0.72)">UNACEM North America works to reduce environmental impact through modern production, efficiency-driven systems, responsible resource use, and lower-carbon material options.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--hairline);margin-bottom:64px">
+      <div style="background:#F1F0ED;padding:40px 36px 44px;border-top:4px solid #000">
+        <p style="margin:0 0 16px;font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase">Environmental responsibility</p>
+        <p style="margin:0;font-size:16px;line-height:1.6;color:rgba(0,0,0,0.7)">Recycled material, reduced clinker use and cleaner energy alternatives are part of the long-term direction.</p>
+      </div>
+      <div style="background:#F1F0ED;padding:40px 36px 44px;border-top:4px solid var(--unacem-red)">
+        <p style="margin:0 0 16px;font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase">Social responsibility</p>
+        <p style="margin:0;font-size:16px;line-height:1.6;color:rgba(0,0,0,0.7)">Acting as a good neighbor and supporting employee and community development.</p>
+      </div>
+      <div style="background:#F1F0ED;padding:40px 36px 44px;border-top:4px solid #000">
+        <p style="margin:0 0 16px;font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase">Sustainable governance</p>
+        <p style="margin:0;font-size:16px;line-height:1.6;color:rgba(0,0,0,0.7)">Transparency, communication and long-term value creation.</p>
+      </div>
+    </div>
+    <a href="https://unacem-na.com/sustainability/" target="_blank" rel="noopener" style="display:grid;grid-template-columns:1fr 1.4fr;gap:48px;background:#000;color:#fff;padding:48px;align-items:center" style-hover="color:#fff">
+      <div>
+        <p style="margin:0 0 20px;font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--unacem-red)">Energy performance · 2025</p>
+        <p style="margin:0;font-family:var(--font-display);text-transform:uppercase;font-size:26px;line-height:1.02;color:#fff">Drake Cement Plant earns its sixth consecutive ENERGY STAR® Plant Certification.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <p style="margin:0;font-size:17px;line-height:1.6;color:rgba(255,255,255,0.74)">The certification places the facility among the top 25 percent of comparable cement plants nationwide for energy performance.</p>
+        <span style="font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#fff;border-bottom:2px solid var(--unacem-red);padding-bottom:4px;align-self:flex-start">Read the sustainability commitment →</span>
+      </div>
+    </a>
+  </section>
+
+  <section data-screen-label="People bridge" style="position:relative;height:78vh;overflow:hidden;background:#000">
+    <img src="assets/photography/people-1-web.jpg" alt="The UNACEM North America team gathered together in safety gear at a company event." style="width:100%;height:100%;object-fit:cover;object-position:50% 45%">
+    <div style="position:absolute;inset:0;background:rgba(0,0,0,0.42)"></div>
+    <div style="position:absolute;left:80px;bottom:72px;right:80px;display:flex;align-items:flex-end;justify-content:space-between;gap:48px">
+      <div>
+        <p style="margin:0 0 24px;font-family:var(--font-numeral);font-size:12px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#fff;animation:u-rise 700ms cubic-bezier(0.22,1,0.36,1) both;animation-timeline:view();animation-range:entry 4% entry 55%">04 · One company. One culture.</p>
+        <h2 style="margin:0;font-family:var(--font-display);text-transform:uppercase;line-height:0.92;font-size:clamp(34px,4.2vw,64px);color:#fff">Infrastructure<br>is built<br><span style="color:var(--unacem-red)">by people.</span></h2>
+      </div>
+      <a href="#/leadership" style="display:flex;align-items:center;height:52px;padding:0 26px;animation:u-bob 4.6s ease-in-out infinite;background:#fff;color:#000;font-size:14px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase" style-hover="background:var(--unacem-red);color:#fff">Meet our leadership →</a>
+    </div>
+  </section>
+
+  <section data-screen-label="News slider" style="padding:150px 0 160px;background:#fff">
+    <div style="padding:0 80px;display:flex;align-items:flex-end;justify-content:space-between;gap:48px;margin-bottom:56px">
+      <div>
+        <p style="margin:0 0 24px;font-family:var(--font-numeral);font-size:12px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--unacem-red)">05 · Latest news</p>
+        <h2 style="margin:0;font-family:var(--font-display);text-transform:uppercase;line-height:0.92;font-size:clamp(34px,4vw,60px)">What we’re building next.</h2>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center">
+        <button type="button" aria-label="Previous stories" onClick="{{ slidePrev }}" style="width:52px;height:52px;background:#fff;border:1px solid var(--hairline);cursor:pointer;font-size:18px;font-family:var(--font-body)" style-hover="border-color:#000">←</button>
+        <button type="button" aria-label="Next stories" onClick="{{ slideNext }}" style="width:52px;height:52px;background:#fff;border:1px solid var(--hairline);cursor:pointer;font-size:18px;font-family:var(--font-body)" style-hover="border-color:#000">→</button>
+        <a href="#/news" style="margin-left:18px;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;border-bottom:2px solid var(--unacem-red);padding-bottom:4px">View all news →</a>
+      </div>
+    </div>
+    <div data-scrollbarless="true" ref="{{ sliderRef }}" onPointerDown="{{ dragStart }}" style="display:flex;gap:1px;padding:0 80px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;cursor:grab">
+      <sc-for list="{{ news }}" as="s" hint-placeholder-count="3">
+        <a href="{{ s.href }}" style="flex:0 0 {{ s.width }};scroll-snap-align:start;background:{{ s.bg }};color:{{ s.fg }};border:1px solid {{ s.border }};padding:36px;display:flex;flex-direction:column;gap:22px;transition:border-color 160ms var(--ease-standard);animation:u-rise 760ms cubic-bezier(0.22,1,0.36,1) {{ s.delay }} both;animation-timeline:view();animation-range:entry 2% entry 50%">
+          <div style="display:flex;gap:16px;align-items:center;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase">
+            <span style="color:{{ s.cat }}">{{ s.category }}</span>
+            <span style="width:16px;height:1px;background:{{ s.muted }}"></span>
+            <span style="font-family:var(--font-numeral);color:{{ s.muted }}">{{ s.date }}</span>
+          </div>
+          <p style="margin:0;font-family:var(--font-display);text-transform:uppercase;font-size:{{ s.titleSize }};line-height:1.0">{{ s.title }}</p>
+          <p style="margin:0;font-size:16px;line-height:1.6;color:{{ s.muted }}">{{ s.excerpt }}</p>
+          <span style="margin-top:auto;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;border-bottom:2px solid {{ s.ctaBorder }};padding-bottom:4px;align-self:flex-start">{{ s.cta }}</span>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-screen-label="Grupo UNACEM" style="padding:140px 80px;background:#000;color:#fff">
+    <div style="display:grid;grid-template-columns:1.15fr 1fr;gap:80px;align-items:center">
+      <h2 style="margin:0;font-family:var(--font-display);text-transform:uppercase;line-height:0.94;font-size:clamp(30px,3.4vw,54px);color:#fff">More than 100 years<br>of <span style="color:var(--unacem-red)">industrial experience.</span></h2>
+      <div style="display:flex;flex-direction:column;gap:28px">
+        <p style="margin:0;font-size:18px;line-height:1.6;color:rgba(255,255,255,0.74)">Grupo UNACEM operates in Peru, Ecuador, Chile, Colombia and the United States. Its history is characterized by technological innovation, business growth, talent and knowledge across cement, concrete, energy and engineering.</p>
+        <a href="https://unacem-na.com/wp-content/uploads/2025/12/Grupo-UNACEM-Integrated-Report-2024.pdf" target="_blank" rel="noopener" style="align-self:flex-start;display:flex;align-items:center;height:52px;padding:0 26px;animation:u-bob 4.6s ease-in-out infinite;border:1px solid rgba(255,255,255,0.5);color:#fff;font-size:14px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase" style-hover="background:#fff;color:#000">Read the Grupo UNACEM Integrated Report →</a>
+      </div>
+    </div>
+    <img src="assets/graphics/edifications-white.svg" alt="" style="display:block;width:100%;height:120px;object-fit:cover;object-position:left bottom;margin-top:96px;opacity:0.9;mask-image:linear-gradient(#000,#000);-webkit-mask-image:linear-gradient(#000,#000);mask-repeat:no-repeat;animation:u-cols 1600ms steps(16,end) both;animation-timeline:view();animation-range:entry 0% entry 72%">
+  </section>
+
+</main>
+</sc-if>
+
+<sc-if value="{{ isProducts }}">
+<main data-screen-label="Products hub">
+  <section style="padding:180px 80px 100px;background:#fff">
+    <p style="margin:0 0 24px;font-family:var(--font-numeral);font-size:12px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--unacem-red)">Products · Southwest supply</p>
+    <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:end">
+      <h1 style="margin:0;font-family:var(--font-display);text-transform:uppercase;line-height:0.92;font-size:clamp(40px,5.6vw,96px)">Materials<br>engineered for<br>what comes next.</h1>
+      <p style="margin:0;font-size:18px;line-height:1.6;color:rgba(0,0,0,0.72)">Explore cement, pozzolan, ready mix concrete and aggregates supplied through UNACEM North America’s regional network.</p>
+    </div>
+  </section>
+
+  <div style="position:sticky;top:96px;z-index:40;background:#fff;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)">
+    <div style="display:flex;gap:0;padding:0 80px">
+      <sc-for list="{{ chapters }}" as="c" hint-placeholder-count="4">
+        <a href="{{ c.href }}" style="display:flex;align-items:center;gap:12px;padding:20px 22px;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:{{ c.color }};animation:u-glow 7s ease-in-out {{ c.delay }} infinite">
+          <span style="font-family:var(--font-numeral);color:var(--unacem-red)">{{ c.num }}</span>{{ c.name }}
+        </a>
+      </sc-for>
+    </div>
+  </div>
+
+  <sc-for list="{{ productChapters }}" as="p" hint-placeholder-count="4">
+    <section id="{{ p.id }}" style="border-bottom:1px solid var(--hairline)">
+      <div style="background:{{ p.openingBg }};color:{{ p.openingFg }};padding:110px 80px;display:flex;align-items:baseline;gap:48px">
+        <span style="font-family:var(--font-numeral);font-size:120px;line-height:0.8;color:{{ p.numColor }}">{{ p.num }}</span>
+        <span style="font-family:var(--font-display);text-transform:uppercase;font-size:clamp(30px,3.6vw,58px);line-height:0.94">{{ p.name }}</span>
+      </div>
+      <div style="padding:110px 80px 130px;background:#fff">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;margin-bottom:96px">
+          <div style="aspect-ratio:16/11;overflow:hidden;background:#F1F0ED">
+            <video src="{{ p.video }}" autoplay="" muted="" loop="" playsinline="" style="width:100%;height:100%;object-fit:cover"></video>
+          </div>
+          <div>
+            <h2 style="margin:0 0 28px;font-family:var(--font-display);text-transform:uppercase;line-height:0.94;font-size:clamp(28px,3vw,46px)">{{ p.headline }}</h2>
+            <p style="margin:0 0 32px;font-size:18px;line-height:1.6;color:rgba(0,0,0,0.74)">{{ p.summary }}</p>
+            <a href="https://unacem-na.com/contact-us/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;height:52px;padding:0 26px;animation:u-bob 4.6s ease-in-out infinite;background:var(--unacem-red);color:#fff;font-size:14px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase" style-hover="background:#D60000;color:#fff">Check availability →</a>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--hairline);margin-bottom:64px">
+          <div style="background:#fff;padding:36px 32px 40px">
+            <p style="margin:0 0 20px;font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--unacem-red)">Applications</p>
+            <p style="margin:0;font-size:16px;line-height:1.6;color:rgba(0,0,0,0.72)">{{ p.applications }}</p>
+          </div>
+          <div style="background:#fff;padding:36px 32px 40px">
+            <p style="margin:0 0 20px;font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--unacem-red)">Performance and benefits</p>
+            <p style="margin:0;font-size:16px;line-height:1.6;color:rgba(0,0,0,0.72)">{{ p.performance }}</p>
+          </div>
+          <div style="background:#fff;padding:36px 32px 40px">
+            <p style="margin:0 0 20px;font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--unacem-red)">{{ p.thirdLabel }}</p>
+            <p style="margin:0;font-size:16px;line-height:1.6;color:rgba(0,0,0,0.72)">{{ p.thirdBody }}</p>
+          </div>
+        </div>
+        <sc-for list="{{ p.details }}" as="d" hint-placeholder-count="2">
+          <details style="border-top:1px solid var(--hairline)">
+            <summary style="cursor:pointer;padding:26px 0;font-family:var(--font-display);text-transform:uppercase;font-size:20px;list-style:none">{{ d.title }}</summary>
+            <div style="padding:0 0 32px;max-width:80ch;font-size:16px;line-height:1.7;color:rgba(0,0,0,0.72);white-space:pre-line">{{ d.body }}</div>
+          </details>
+        </sc-for>
+        <sc-if value="{{ p.hasDownloads }}" hint-placeholder-val="{{ true }}">
+          <div style="margin-top:56px">
+            <p style="margin:0 0 24px;font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase">Technical resources</p>
+            <div style="display:flex;flex-wrap:wrap;gap:1px;background:var(--hairline)">
+              <sc-for list="{{ p.downloads }}" as="dl" hint-placeholder-count="3">
+                <a href="{{ dl.href }}" target="_blank" rel="noopener" style="background:#fff;padding:22px 28px;font-size:14px;font-weight:500;display:flex;align-items:center;gap:16px;min-width:280px" style-hover="background:#000;color:#fff">{{ dl.label }}<span style="margin-left:auto;color:var(--unacem-red);animation:u-arrow 2.4s ease-in-out infinite">↓</span></a>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </section>
+  </sc-for>
+
+  <section style="padding:130px 80px 150px;background:#F1F0ED">
+    <h2 style="margin:0 0 56px;font-family:var(--font-display);text-transform:uppercase;line-height:0.94;font-size:clamp(28px,3.2vw,50px)">Start with what<br>you are building.</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--hairline);margin-bottom:56px">
+      <sc-for list="{{ comparator }}" as="c" hint-placeholder-count="4">
+        <div style="background:#F1F0ED;padding:30px 32px;display:flex;justify-content:space-between;gap:32px;align-items:center;animation:u-rise 700ms cubic-bezier(0.22,1,0.36,1) {{ c.delay }} both;animation-timeline:view();animation-range:entry 2% entry 55%">
+          <span style="display:flex;align-items:center;gap:18px;font-size:16px;color:rgba(0,0,0,0.74)">
+            <svg viewBox="0 0 24 24" aria-hidden="true" style="width:22px;height:22px;flex:0 0 22px;transform:rotate({{ c.rot }}deg)">
+              <rect x="2.75" y="2.75" width="18.5" height="18.5" fill="none" stroke="#000" stroke-width="1.4"></rect>
+              <path d="M2.75 15.5 H9 L14 9.5 H21.25" fill="none" stroke="#FF0000" stroke-width="1.6"></path>
+            </svg>{{ c.need }}
+          </span>
+          <a href="{{ c.href }}" style="font-family:var(--font-display);text-transform:uppercase;font-size:18px;white-space:nowrap;border-bottom:2px solid var(--unacem-red)">{{ c.rec }}</a>
+        </div>
+      </sc-for>
+    </div>
+    <a href="https://unacem-na.com/contact-us/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;height:56px;padding:0 30px;animation:u-bob 5.2s ease-in-out infinite;background:#000;color:#fff;font-size:15px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase" style-hover="background:var(--unacem-red);color:#fff">Tell us what you’re building →</a>
+  </section>
+</main>
+</sc-if>
+
+<sc-if value="{{ isLeadership }}">
+<main data-screen-label="Leadership">
+  <section style="padding:180px 80px 110px;background:#fff;position:relative;overflow:hidden">
+    <p style="margin:0 0 24px;font-family:var(--font-numeral);font-size:12px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--unacem-red)">Leadership · One company. One culture.</p>
+    <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:end">
+      <h1 style="margin:0;font-family:var(--font-display);text-transform:uppercase;line-height:0.92;font-size:clamp(40px,5.4vw,92px)">Leadership<br>that builds<br><span style="color:var(--unacem-red)">with purpose.</span></h1>
+      <p style="margin:0;font-size:18px;line-height:1.6;color:rgba(0,0,0,0.72)">A shared commitment to people, performance, integrity and sustainable growth guides how UNACEM North America moves forward.</p>
+    </div>
+    <img src="assets/graphics/edifications-black.svg" alt="" style="display:block;width:100%;height:110px;object-fit:cover;object-position:left bottom;margin-top:72px;opacity:0.9;mask-image:linear-gradient(#000,#000);-webkit-mask-image:linear-gradient(#000,#000);mask-repeat:no-repeat;animation:u-cols 1500ms steps(16,end) both;animation-timeline:view();animation-range:entry 0% entry 70%">
+  </section>
+
+  <section style="padding:0 80px 40px;background:#fff">
+    <p style="margin:0 0 40px;display:inline-flex;align-items:center;gap:12px;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;border:1px solid var(--unacem-red);color:var(--unacem-red);padding:10px 16px">Prototype notice · portraits and most profiles are placeholders</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--hairline)">
+      <sc-for list="{{ leaders }}" as="l" hint-placeholder-count="7">
+        <button type="button" onClick="{{ l.open }}" style="background:#fff;border:0;padding:28px;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:22px;font-family:var(--font-body);position:relative" style-hover="background:#F1F0ED">
+          <div style="aspect-ratio:4/5;background:{{ l.plateBg }};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;border:1px solid var(--hairline)">
+            <img src="assets/logos/isotype-black.svg" alt="" style="width:44px;height:44px;opacity:0.22">
+            <span style="font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:rgba(0,0,0,0.45)">Portrait pending</span>
+          </div>
+          <div>
+            <p style="margin:0 0 8px;font-family:var(--font-display);text-transform:uppercase;font-size:22px;line-height:1.0">{{ l.name }}</p>
+            <p style="margin:0 0 14px;font-size:14px;color:rgba(0,0,0,0.66)">{{ l.title }}</p>
+            <span style="font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:{{ l.badgeColor }}">{{ l.badge }}</span>
+          </div>
+          <span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;border-bottom:2px solid var(--unacem-red);padding-bottom:3px;align-self:flex-start">View profile →</span>
+        </button>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="margin-top:120px;position:relative;height:70vh;overflow:hidden;background:#000">
+    <img src="assets/photography/people-2-web.jpg" alt="UNACEM North America colleagues together at a company gathering." style="width:100%;height:100%;object-fit:cover">
+    <div style="position:absolute;inset:0;background:rgba(0,0,0,0.45)"></div>
+    <div style="position:absolute;left:80px;bottom:72px;right:80px;display:flex;align-items:flex-end;justify-content:space-between;gap:48px">
+      <h2 style="margin:0;font-family:var(--font-display);text-transform:uppercase;line-height:0.94;font-size:clamp(30px,3.6vw,58px);color:#fff">One purpose.<br><span style="color:var(--unacem-red)">Built together.</span></h2>
+      <a href="https://unacem-na.com/careers/" target="_blank" rel="noopener" style="display:flex;align-items:center;height:52px;padding:0 26px;animation:u-bob 4.6s ease-in-out infinite;background:#fff;color:#000;font-size:14px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase" style-hover="background:var(--unacem-red);color:#fff">Explore careers →</a>
+    </div>
+  </section>
+</main>
+</sc-if>
+
+<sc-if value="{{ isNews }}">
+<main data-screen-label="Newsroom">
+  <section style="padding:180px 80px 90px;background:#fff">
+    <p style="margin:0 0 24px;font-family:var(--font-numeral);font-size:12px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--unacem-red)">Newsroom · North America</p>
+    <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:end">
+      <h1 style="margin:0;font-family:var(--font-display);text-transform:uppercase;line-height:0.92;font-size:clamp(40px,5.6vw,96px)">News from<br>across the<br>Southwest.</h1>
+      <p style="margin:0;font-size:18px;line-height:1.6;color:rgba(0,0,0,0.72)">Company updates, sustainability progress, operational milestones and stories from across UNACEM North America.</p>
+    </div>
+  </section>
+
+  <section style="padding:0 80px 120px;background:#fff">
+    <a href="#/news/grupo-unacem-q2-2026" style="display:grid;grid-template-columns:1fr 1.2fr;gap:64px;border-top:4px solid var(--unacem-red);padding-top:40px;align-items:center" style-hover="color:#000">
+      <div>
+        <div style="display:flex;gap:16px;align-items:center;margin-bottom:28px;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase">
+          <span style="color:var(--unacem-red)">Business</span>
+          <span style="width:16px;height:1px;background:var(--hairline-strong)"></span>
+          <span style="font-family:var(--font-numeral);color:rgba(0,0,0,0.6)">August 19, 2026</span>
+        </div>
+        <h2 style="margin:0 0 28px;font-family:var(--font-display);text-transform:uppercase;line-height:0.98;font-size:clamp(26px,2.8vw,42px)">UNACEM North America contributes to Grupo UNACEM’s strong Q2 2026 performance.</h2>
+        <p style="margin:0 0 28px;font-size:17px;line-height:1.6;color:rgba(0,0,0,0.72)">U.S. revenue reached USD 123.4 million in the second quarter of 2026, 21.1% higher than the same quarter in 2025, supported by higher volumes in cementitious materials, ready mix and aggregates.</p>
+        <span style="font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;border-bottom:2px solid var(--unacem-red);padding-bottom:4px">Read the story →</span>
+      </div>
+      <img src="assets/photography/plant-aerial-web.jpg" alt="Panoramic view of a UNACEM North America cement plant in the Southwest." style="width:100%;aspect-ratio:16/10;object-fit:cover">
+    </a>
+  </section>
+
+  <section style="padding:0 80px 140px;background:#fff">
+    <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;background:#000;padding:24px 28px;margin-bottom:56px;animation:u-rise 700ms cubic-bezier(0.22,1,0.36,1) both;animation-timeline:view();animation-range:entry 2% entry 50%">
+      <input type="search" placeholder="Search news" value="{{ query }}" onChange="{{ setQuery }}" aria-label="Search news" style="height:44px;padding:0 16px;background:transparent;border:1px solid rgba(255,255,255,0.4);color:#fff;font-family:var(--font-body);font-size:14px;min-width:260px;border-radius:0">
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <sc-for list="{{ categories }}" as="c" hint-placeholder-count="6">
+          <button type="button" onClick="{{ c.select }}" style="height:44px;padding:0 18px;border:1px solid {{ c.border }};background:{{ c.bg }};color:{{ c.fg }};font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer">{{ c.label }}</button>
+        </sc-for>
+      </div>
+      <select aria-label="Year" onChange="{{ setYear }}" style="height:44px;padding:0 14px;border:1px solid rgba(255,255,255,0.4);font-family:var(--font-body);font-size:14px;background:#000;color:#fff;border-radius:0;margin-left:auto">
+        <option>All years</option>
+        <option>2026</option>
+        <option>2025</option>
+      </select>
+      <span style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6)">Newest first</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--hairline)">
+      <sc-for list="{{ filteredNews }}" as="s" hint-placeholder-count="3">
+        <a href="{{ s.href }}" style="background:#fff;padding:28px 28px 36px;display:flex;flex-direction:column;gap:20px;animation:u-rise 720ms cubic-bezier(0.22,1,0.36,1) {{ s.delay }} both;animation-timeline:view();animation-range:entry 2% entry 55%" style-hover="background:#F1F0ED">
+          <sc-if value="{{ s.hasThumb }}" hint-placeholder-val="{{ false }}">
+            <div role="img" aria-label="UNACEM North America cement plant" style="width:100%;aspect-ratio:16/10;background-color:#F1F0ED;background-image:url({{ s.thumb }});background-size:cover;background-position:50% 50%"></div>
+          </sc-if>
+          <sc-if value="{{ s.noThumb }}" hint-placeholder-val="{{ true }}">
+            <div style="width:100%;aspect-ratio:16/10;background:#F1F0ED;border:1px solid var(--hairline);display:flex;align-items:center;justify-content:center">
+              <span style="font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(0,0,0,0.42)">Photo pending</span>
+            </div>
+          </sc-if>
+          <div style="display:flex;gap:14px;align-items:center;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase">
+            <span style="color:var(--unacem-red)">{{ s.category }}</span>
+            <span style="font-family:var(--font-numeral);color:rgba(0,0,0,0.6)">{{ s.date }}</span>
+          </div>
+          <p style="margin:0;font-family:var(--font-display);text-transform:uppercase;font-size:22px;line-height:1.02">{{ s.title }}</p>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:rgba(0,0,0,0.68)">{{ s.excerpt }}</p>
+          <span style="margin-top:auto;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;border-bottom:2px solid var(--unacem-red);padding-bottom:3px;align-self:flex-start">{{ s.cta }}</span>
+        </a>
+      </sc-for>
+      <sc-for list="{{ emptySlots }}" as="e" hint-placeholder-count="3">
+        <div style="background:#fff;padding:36px 32px 40px;display:flex;align-items:center;justify-content:center;min-height:220px;border:1px dashed var(--hairline)">
+          <span style="font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(0,0,0,0.42)">More stories coming soon.</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="padding:120px 80px;background:#000;color:#fff">
+    <div style="display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:start">
+      <div>
+        <p style="margin:0 0 24px;font-size:12px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--unacem-red)">Stay informed</p>
+        <h2 style="margin:0 0 28px;font-family:var(--font-display);text-transform:uppercase;line-height:0.94;font-size:clamp(28px,3.2vw,50px);color:#fff">News worth<br>building on.</h2>
+        <p style="margin:0;font-size:17px;line-height:1.6;color:rgba(255,255,255,0.72)">Receive occasional updates from UNACEM North America about our operations, people, products and sustainability progress.</p>
+      </div>
+      <form onSubmit="{{ submitNewsletter }}" style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+        <label style="display:flex;flex-direction:column;gap:10px;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.7)">First name
+          <input type="text" value="{{ form.first }}" onChange="{{ setFirst }}" style="height:48px;padding:0 14px;background:transparent;border:1px solid rgba(255,255,255,0.4);color:#fff;font-family:var(--font-body);font-size:15px;border-radius:0" style-focus="border-color:#fff;outline:2px solid #fff;outline-offset:2px">
+        </label>
+        <label style="display:flex;flex-direction:column;gap:10px;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.7)">Last name
+          <input type="text" value="{{ form.last }}" onChange="{{ setLast }}" style="height:48px;padding:0 14px;background:transparent;border:1px solid rgba(255,255,255,0.4);color:#fff;font-family:var(--font-body);font-size:15px;border-radius:0" style-focus="border-color:#fff;outline:2px solid #fff;outline-offset:2px">
+        </label>
+        <label style="grid-column:1 / -1;display:flex;flex-direction:column;gap:10px;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.7)">Email address
+          <input type="email" value="{{ form.email }}" onChange="{{ setEmail }}" style="height:48px;padding:0 14px;background:transparent;border:1px solid {{ form.emailBorder }};color:#fff;font-family:var(--font-body);font-size:15px;border-radius:0" style-focus="border-color:#fff;outline:2px solid #fff;outline-offset:2px">
+        </label>
+        <label style="grid-column:1 / -1;display:flex;flex-direction:column;gap:10px;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.7)">I’m interested in
+          <select onChange="{{ setInterest }}" style="height:48px;padding:0 14px;background:transparent;border:1px solid rgba(255,255,255,0.4);color:#fff;font-family:var(--font-body);font-size:15px;border-radius:0">
+            <option style="color:#000">Company news</option>
+            <option style="color:#000">Sustainability</option>
+            <option style="color:#000">Products</option>
+            <option style="color:#000">Community</option>
+          </select>
+        </label>
+        <label style="grid-column:1 / -1;display:flex;gap:14px;align-items:flex-start;font-size:14px;line-height:1.5;color:rgba(255,255,255,0.78);cursor:pointer">
+          <input type="checkbox" checked="{{ form.consent }}" onChange="{{ setConsent }}" style="width:20px;height:20px;accent-color:#FF0000;margin-top:2px">
+          <span>I consent to receive email updates from UNACEM North America and accept the Privacy Policy.</span>
+        </label>
+        <sc-if value="{{ form.hasError }}">
+          <p style="grid-column:1 / -1;margin:0;padding:14px 16px;border:1px solid var(--unacem-red);color:#fff;font-size:14px">{{ form.error }}</p>
+        </sc-if>
+        <sc-if value="{{ form.sent }}">
+          <p style="grid-column:1 / -1;margin:0;padding:14px 16px;border:1px solid #fff;color:#fff;font-size:14px">Thank you. Connect this form to the approved email platform before launch.</p>
+        </sc-if>
+        <button type="submit" style="grid-column:1 / -1;justify-self:start;height:52px;padding:0 28px;animation:u-bob 4.8s ease-in-out infinite;background:var(--unacem-red);color:#fff;border:0;font-family:var(--font-body);font-size:14px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer" style-hover="background:#D60000">Subscribe →</button>
+      </form>
+    </div>
+  </section>
+
+  <section style="padding:110px 80px 140px;background:#fff">
+    <p style="margin:0 0 32px;font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase">Press resources</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--hairline)">
+      <div style="background:#fff;padding:30px 28px">
+        <p style="margin:0 0 10px;font-family:var(--font-display);text-transform:uppercase;font-size:18px">Brand assets</p>
+        <p style="margin:0;font-size:14px;color:rgba(0,0,0,0.6)">Placeholder until the download package is approved.</p>
+      </div>
+      <a href="https://unacem-na.com/wp-content/uploads/2025/12/Grupo-UNACEM-Integrated-Report-2024.pdf" target="_blank" rel="noopener" style="background:#fff;padding:30px 28px;display:block" style-hover="background:#000;color:#fff">
+        <p style="margin:0 0 10px;font-family:var(--font-display);text-transform:uppercase;font-size:18px">Sustainability reports</p>
+        <p style="margin:0;font-size:14px;opacity:0.7">Grupo UNACEM Integrated Report 2024 ↓</p>
+      </a>
+      <div style="background:#fff;padding:30px 28px">
+        <p style="margin:0 0 10px;font-family:var(--font-display);text-transform:uppercase;font-size:18px">Media contact</p>
+        <p style="margin:0;font-size:14px;color:rgba(0,0,0,0.6)">Contact information pending official approval.</p>
+      </div>
+    </div>
+  </section>
+</main>
+</sc-if>
+
+<sc-if value="{{ isArticle }}">
+<main data-screen-label="Article" style="background:#fff">
+  <section style="padding:170px 80px 60px">
+    <a href="#/news" style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--unacem-red)">← Back to newsroom</a>
+  </section>
+  <section style="padding:0 80px 60px;max-width:1100px">
+    <div style="display:flex;gap:16px;align-items:center;margin-bottom:32px;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase">
+      <span style="color:var(--unacem-red)">Business</span>
+      <span style="width:16px;height:1px;background:var(--hairline-strong)"></span>
+      <span style="font-family:var(--font-numeral);color:rgba(0,0,0,0.6)">August 19, 2026</span>
+    </div>
+    <h1 style="margin:0 0 32px;font-family:var(--font-display);text-transform:uppercase;line-height:0.96;font-size:clamp(32px,4vw,64px)">UNACEM North America contributes to Grupo UNACEM’s strong Q2 2026 performance.</h1>
+    <p style="margin:0;max-width:760px;font-size:21px;line-height:1.5;color:rgba(0,0,0,0.7)">U.S. revenue reached USD 123.4 million in the second quarter of 2026, supported by higher volumes in cementitious materials, ready mix and aggregates.</p>
+  </section>
+  <img src="assets/photography/plant-aerial-web.jpg" alt="Panoramic view of a UNACEM North America cement plant." style="display:block;width:100%;height:56vh;object-fit:cover;margin-bottom:72px">
+  <section style="padding:0 80px 60px">
+    <div style="max-width:720px;display:flex;flex-direction:column;gap:26px;font-size:18px;line-height:1.7;color:rgba(0,0,0,0.78)">
+      <p style="margin:0">U.S. revenue reached USD 123.4 million in the second quarter of 2026, 21.1% higher than the same quarter in 2025. U.S. EBITDA was USD 10.7 million.</p>
+      <p style="margin:0">Cementitious material shipments increased 11.8%, ready mix volumes increased 27.0% and aggregates volumes increased 55.6%.</p>
+      <p style="margin:0">Scheduled maintenance at the U.S. cement plants was completed during the first quarter of 2026.</p>
+      <p style="margin:0;padding:24px 0;border-top:4px solid var(--unacem-red);font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(0,0,0,0.6)">Source: Grupo UNACEM Q2 2026 results release. Editorial review required before publication.</p>
+    </div>
+  </section>
+  <section style="padding:0 80px 140px">
+    <p style="margin:0 0 28px;font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase">Related stories</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--hairline)">
+      <a href="#/news" style="background:#fff;padding:32px 28px" style-hover="background:#F1F0ED">
+        <p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--unacem-red)">Sustainability · 2025</p>
+        <p style="margin:0;font-family:var(--font-display);text-transform:uppercase;font-size:20px;line-height:1.02">Six years of ENERGY STAR® excellence at Drake Cement Plant</p>
+      </a>
+      <a href="#/news" style="background:#fff;padding:32px 28px" style-hover="background:#F1F0ED">
+        <p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--unacem-red)">Leadership · 2026</p>
+        <p style="margin:0;font-family:var(--font-display);text-transform:uppercase;font-size:20px;line-height:1.02">Dania Heredia joins UNACEM North America</p>
+      </a>
+    </div>
+  </section>
+</main>
+</sc-if>
+
+<sc-if value="{{ person }}">
+  <div onClick="{{ closePerson }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:120"></div>
+  <aside role="dialog" aria-modal="true" style="position:fixed;top:0;right:0;bottom:0;width:520px;background:#fff;z-index:121;padding:56px 48px;display:flex;flex-direction:column;gap:28px;border-left:4px solid var(--unacem-red);animation:u-rise 320ms cubic-bezier(0.22,1,0.36,1) both">
+    <button type="button" onClick="{{ closePerson }}" aria-label="Close profile" style="align-self:flex-end;width:44px;height:44px;border:1px solid var(--hairline);background:#fff;cursor:pointer;font-size:18px;font-family:var(--font-body)" style-hover="border-color:#000">✕</button>
+    <div style="aspect-ratio:4/5;max-height:300px;background:#F1F0ED;border:1px solid var(--hairline);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px">
+      <img src="assets/logos/isotype-black.svg" alt="" style="width:40px;height:40px;opacity:0.22">
+      <span style="font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:rgba(0,0,0,0.45)">Portrait pending</span>
+    </div>
+    <div>
+      <p style="margin:0 0 10px;font-family:var(--font-display);text-transform:uppercase;font-size:28px;line-height:1.0">{{ person.name }}</p>
+      <p style="margin:0 0 18px;font-size:15px;color:rgba(0,0,0,0.66)">{{ person.title }}</p>
+      <p style="margin:0 0 22px;font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:{{ person.badgeColor }}">{{ person.badge }}</p>
+      <p style="margin:0;font-size:17px;line-height:1.6;color:rgba(0,0,0,0.78)">{{ person.bio }}</p>
+    </div>
+  </aside>
+</sc-if>
+
+<footer style="background:#000;color:#fff;padding:130px 80px 0;position:relative;overflow:hidden">
+  <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:80px;align-items:end;margin-bottom:110px">
+    <h2 style="margin:0;font-family:var(--font-display);text-transform:uppercase;line-height:0.94;font-size:clamp(30px,3.6vw,58px);color:#fff">A reliable partner<br>for high-performance<br><span style="color:var(--unacem-red)">building materials.</span></h2>
+    <div style="display:flex;flex-direction:column;gap:28px">
+      <p style="margin:0;font-size:17px;line-height:1.6;color:rgba(255,255,255,0.72)">Talk to our team about cement, ready mix concrete, aggregates or pozzolan for your next project in the Southwest.</p>
+      <a href="https://unacem-na.com/contact-us/" target="_blank" rel="noopener" style="align-self:flex-start;display:flex;align-items:center;height:56px;padding:0 30px;animation:u-bob 5.2s ease-in-out infinite;background:var(--unacem-red);color:#fff;font-size:15px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase" style-hover="background:#fff;color:#000">Start a conversation →</a>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:64px;padding-bottom:80px;border-top:1px solid rgba(255,255,255,0.24);padding-top:56px">
+    <div style="display:flex;flex-direction:column;gap:26px">
+      <img src="assets/logos/logo-horizontal-white.svg" alt="UNACEM North America" style="width:220px;height:auto">
+      <p style="margin:0;font-size:15px;line-height:1.7;color:rgba(255,255,255,0.7)">19001 N Scottsdale Rd #420<br>Scottsdale, AZ 85255<br><a href="tel:+14802196670" style="color:#fff">(480) 219-6670</a></p>
+    </div>
+    <nav style="display:flex;flex-direction:column;gap:14px;font-size:14px">
+      <a href="#/" style="color:rgba(255,255,255,0.72)" style-hover="color:#fff">Home</a>
+      <a href="#/products" style="color:rgba(255,255,255,0.72)" style-hover="color:#fff">Products</a>
+      <a href="#/leadership" style="color:rgba(255,255,255,0.72)" style-hover="color:#fff">Leadership</a>
+      <a href="#/news" style="color:rgba(255,255,255,0.72)" style-hover="color:#fff">News</a>
+      <a href="https://unacem-na.com/about-us/" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.72)" style-hover="color:#fff">About</a>
+      <a href="https://unacem-na.com/locations/" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.72)" style-hover="color:#fff">Locations</a>
+    </nav>
+    <nav style="display:flex;flex-direction:column;gap:14px;font-size:14px">
+      <a href="https://unacem-na.com/careers/" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.72)" style-hover="color:#fff">Careers</a>
+      <a href="https://unacem-na.com/contact-us/" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.72)" style-hover="color:#fff">Contact</a>
+      <a href="https://unacem-na.com/privacy-policy/" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.72)" style-hover="color:#fff">Privacy</a>
+      <a href="https://unacem-na.com/" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.72)" style-hover="color:#fff">Sitemap</a>
+      <a href="https://unacem-na.com/" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.72)" style-hover="color:#fff">Terms</a>
+    </nav>
+  </div>
+  <p style="margin:0;padding-bottom:40px;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.5)">© {{ year }} UNACEM North America · Prototype for internal review</p>
+  <img src="assets/graphics/edifications-red.svg" alt="" style="display:block;width:100%;height:150px;object-fit:cover;object-position:left bottom;animation:u-wipe 900ms cubic-bezier(0.22,1,0.36,1) both;animation-timeline:view();animation-range:entry 0% cover 40%">
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showPlaceholderBadges&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Prototype&quot;},&quot;chapterTransitions&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Prototype&quot;}}">
+const RED = '#FF0000';
+
+const NEWS = [
+  { slug: 'grupo-unacem-q2-2026', category: 'Business', date: 'August 19, 2026', year: '2026', image: 'assets/photography/plant-aerial-web.jpg',
+    title: 'UNACEM North America contributes to Grupo UNACEM’s strong Q2 2026 performance',
+    excerpt: 'U.S. revenue reached USD 123.4 million, supported by higher volumes in cementitious materials, ready mix and aggregates.',
+    cta: 'Read the story →', href: '#/news/grupo-unacem-q2-2026' },
+  { slug: 'energy-star-2025', category: 'Sustainability', date: '2025', year: '2025',
+    title: 'Six years of ENERGY STAR® excellence at Drake Cement Plant',
+    excerpt: 'The plant earned the EPA’s 2025 ENERGY STAR® Plant Certification for the sixth consecutive year.',
+    cta: 'Read on unacem-na.com →', href: 'https://unacem-na.com/sustainability/' },
+  { slug: 'dania-heredia', category: 'Leadership', date: '2026', year: '2026',
+    title: 'Dania Heredia joins UNACEM North America',
+    excerpt: 'Dania Heredia joins the organization as Chief Legal & Corporate Affairs Officer, supporting integrity, culture and stakeholder trust.',
+    cta: 'View leadership →', href: '#/leadership' }
+];
+
+const LEADERS = [
+  { name: 'Dania Heredia', title: 'Chief Legal & Corporate Affairs Officer', real: true,
+    bio: 'Dania Heredia serves as Chief Legal & Corporate Affairs Officer at UNACEM North America.' },
+  { name: 'Adrian Cole', title: 'Chief Executive Officer' },
+  { name: 'Elena Torres', title: 'Chief Operating Officer' },
+  { name: 'Michael Grant', title: 'Chief Financial Officer' },
+  { name: 'Priya Shah', title: 'Chief People Officer' },
+  { name: 'Jordan Hayes', title: 'Chief Commercial Officer' },
+  { name: 'Isabel Romero', title: 'VP, Sustainability & Environment' }
+];
+
+const REGIONS = {
+  arizona: {
+    key: 'arizona', abbr: 'AZ', name: 'Arizona', hasPhoto: true,
+    body: 'UNACEM North America operates a fully integrated building materials network in Arizona, supplying cement, ready mix concrete, and aggregates across the state and the broader Southwest.',
+    label: 'Drake Cement Plant · Paulden',
+    path: 'M641 409 H935 V873 H816 L605 759 L618 695 L639 630 L612 573 L599 482 Z',
+    cx: 737, cy: 583, labelX: 770, labelY: 700
+  },
+  california: {
+    key: 'california', abbr: 'CA', name: 'California', hasPhoto: false,
+    body: 'The Tehachapi cement plant and strategically located distribution terminals support dependable supply and efficient delivery throughout Southern California.',
+    label: 'Tehachapi Cement Plant · Tehachapi',
+    path: 'M47 0 L59 131 L76 254 L153 344 L183 442 L259 606 L388 679 L465 777 L605 759 L612 573 L294 245 L294 0 Z',
+    cx: 385, cy: 562, labelX: 150, labelY: 470
+  },
+  nevada: {
+    key: 'nevada', abbr: 'NV', name: 'Nevada', hasPhoto: false,
+    body: 'UNACEM North America serves Southern Nevada through its Las Vegas terminal and ready mix operations, backed by its Southwest manufacturing network.',
+    label: 'Las Vegas terminal and ready mix operations',
+    path: 'M294 0 H641 V409 L599 482 L612 573 L294 245 Z',
+    cx: 580, cy: 477, labelX: 430, labelY: 200
+  }
+};
+
+const CHAPTERS = [
+  { id: 'cement', num: '01', name: 'Cement' },
+  { id: 'pozzolan', num: '02', name: 'Pozzolan' },
+  { id: 'ready-mix', num: '03', name: 'Ready Mix' },
+  { id: 'aggregates', num: '04', name: 'Aggregates' }
+];
+
+const PRODUCTS = [
+  {
+    id: 'cement', num: '01', name: 'Cement', video: 'assets/video/cement.mp4',
+    opening: 'white',
+    headline: 'Cement built for demanding conditions.',
+    summary: 'UNACEM North America manufactures high-performance cement at its Drake plant in Paulden, Arizona, and its Tehachapi plant in California, supporting structural concrete, paving and general construction across the Southwest.',
+    applications: 'Foundations, slabs, footings, sidewalks, walls, paving and general structural concrete.',
+    performance: 'Consistency, durability, quality testing, regional availability and product options that support more sustainable construction.',
+    thirdLabel: 'Technical standards',
+    thirdBody: 'ASTM C150 Types I, II and V low alkali. ASTM C1157 GU, MS and HS where applicable.',
+    details: [
+      { title: 'Available types', body: 'Type IL — Portland-limestone cement: designed for general construction with a lower manufacturing CO₂ profile than traditional portland cement.\n\nType IP — Portland-pozzolan cement: combines portland cement with locally mined volcanic pozzolan for general concreting and plastering applications.\n\nType II/V (LA) — Low-alkali portland cement: intended for moderate to high sulfate conditions and helps reduce the risk of alkali-silica reaction.' },
+      { title: 'How it is made', body: '01  Limestone and silica mining and crushing\n02  Raw material storage and blending\n03  Raw grinding\n04  Kiln heating and cooling to form clinker\n05  Clinker storage\n06  Finish grinding with gypsum\n07  Cement storage and shipment by truck or rail' }
+    ],
+    downloads: [
+      { label: 'Product sheet', href: 'https://unacem-na.com/wp-content/uploads/2025/12/product-sheet-1.pdf' },
+      { label: 'Safety data sheet', href: 'https://unacem-na.com/wp-content/uploads/2025/12/msds-1.pdf' },
+      { label: 'Process flow', href: 'https://unacem-na.com/wp-content/uploads/2025/12/process-flow.pdf' },
+      { label: 'Tehachapi Cement EPD', href: 'https://unacem-na.com/wp-content/uploads/2026/02/UNACEM-Tehachapi-Cement-EPD-2025-04-08.pdf' }
+    ]
+  },
+  {
+    id: 'pozzolan', num: '02', name: 'Pozzolan', video: 'assets/video/pozzolan.mp4',
+    opening: 'red',
+    headline: 'Natural minerals. Long-term performance.',
+    summary: 'UNACEM North America supplies Class N natural pozzolan produced from volcanic materials such as ash, pumice and obsidian, finely ground to meet ASTM C618 requirements.',
+    applications: 'Concrete mixes where durability, reduced permeability and lower portland cement demand matter.',
+    performance: 'Long-term strength development, reduced water penetration and chemical reactivity, lower porosity, reduced freeze/thaw sensitivity and reduced efflorescence.',
+    thirdLabel: 'How it works',
+    thirdBody: 'It reacts with calcium hydroxide in cementitious systems to form additional calcium silicate hydrate, supporting denser and more durable concrete and helping mitigate alkali-silica reaction.',
+    details: [
+      { title: 'Benefits in mix design', body: 'Replacement of up to 40% of portland cement in suitable mix designs.\n\nLower embodied carbon potential through reduced portland cement use.\n\nAll figures apply in suitable mix designs and require project-specific validation.' }
+    ],
+    downloads: [
+      { label: 'Natural Pozzolan EPD', href: 'https://unacem-na.com/wp-content/uploads/2025/12/UNACEM-Drake-Natural-Pozzolan-EPD-2025-07-31.pdf' }
+    ]
+  },
+  {
+    id: 'ready-mix', num: '03', name: 'Ready Mix Concrete', video: 'assets/video/ready-mix.mp4',
+    opening: 'white',
+    headline: 'Ready when the jobsite is.',
+    summary: 'Through Desert Ready Mix, UNACEM North America supplies locally manufactured concrete for commercial, residential, infrastructure and industrial work across Arizona, Nevada and the broader Southwest.',
+    applications: 'Commercial, residential, infrastructure and industrial construction across the Southwest.',
+    performance: 'Controlled mix designs, fixed and portable production, experience with high-heat and regional soil conditions, testing, contractor coordination and reduced material waste.',
+    thirdLabel: 'What we commit to',
+    thirdBody: 'Consistency and coordination for on-time delivery to active job sites.',
+    details: [
+      { title: 'Mix options', body: 'Standard mixes · Flowable fill · Lightweight concrete · High-strength concrete · Colored concrete · Accelerated or reduced setting mixes · Fiber-reinforced concrete · Waterproofing options · Reduced-shrinkage mixes' }
+    ],
+    downloads: []
+  },
+  {
+    id: 'aggregates', num: '04', name: 'Aggregates', video: 'assets/video/aggregates.mp4',
+    opening: 'red',
+    headline: 'The foundation of every build.',
+    summary: 'Through Desert Aggregates, UNACEM North America supplies crushed rock, sand, fill dirt and decorative materials for concrete production, site preparation, grading, drainage, masonry and landscaping.',
+    applications: 'Concrete batching, bases and grading, backfill and compaction, drainage, masonry, general construction and landscaping.',
+    performance: 'Consistent screened sizes, broad product range, regional access in Arizona, Southern California and Nevada, support for concrete production, a local supply chain and responsible land use.',
+    thirdLabel: 'Regional access',
+    thirdBody: 'Arizona, Southern California and Nevada, backed by the Southwest manufacturing network.',
+    details: [
+      { title: 'Available materials', body: 'ABC MAG Spec · 57 Rock · 1-inch rock · 1½-inch rock · ½-inch rock · ⅜-inch rock · Fine sand · Concrete sand · Masonry sand · Fill dirt · Decorative rock' }
+    ],
+    downloads: []
+  }
+];
+
+const CATEGORIES = ['All', 'Business', 'Sustainability', 'Leadership', 'Community', 'Operations'];
+
+class Component extends DCLogic {
+  state = {
+    route: 'home', slug: null, region: 'arizona', person: null,
+    filter: 'All', query: '', year: 'All years',
+    form: { first: '', last: '', email: '', interest: 'Company news', consent: false, error: '', sent: false }
+  };
+
+  componentDidMount() {
+    this.sync();
+    window.addEventListener('hashchange', this.sync);
+    window.addEventListener('keydown', this.onKey);
+    this.videoKeepAlive = window.setInterval(() => {
+      document.querySelectorAll('video').forEach(v => {
+        v.loop = true;
+        if (v.paused && v.readyState > 1) { const p = v.play(); if (p && p.catch) p.catch(() => {}); }
+      });
+    }, 3000);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('hashchange', this.sync);
+    window.removeEventListener('keydown', this.onKey);
+    window.clearInterval(this.videoKeepAlive);
+  }
+
+  onKey = (e) => { if (e.key === 'Escape' && this.state.person) this.setState({ person: null }); };
+
+  sync = () => {
+    const h = (window.location.hash || '').replace(/^#\/?/, '');
+    const parts = h.split('/').filter(Boolean);
+    const head = parts[0] || '';
+    let route = 'home', slug = null, anchor = null;
+    if (head === 'products') { route = 'products'; anchor = parts[1] || null; }
+    else if (head === 'leadership') route = 'leadership';
+    else if (head === 'news') { if (parts[1]) { route = 'article'; slug = parts[1]; } else route = 'news'; }
+    else if (head && head !== '') { route = 'home'; anchor = head; }
+    this.setState({ route, slug }, () => {
+      window.setTimeout(() => {
+        if (anchor) {
+          const el = document.getElementById(anchor);
+          if (el) { window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 130, behavior: 'smooth' }); return; }
+        }
+        if (!anchor) window.scrollTo({ top: 0 });
+      }, 90);
+    });
+  };
+
+  go = (region) => () => this.setState({ region });
+
+  slideBy = (dir) => () => {
+    const el = this.slider;
+    if (el) el.scrollBy({ left: dir * Math.round(el.clientWidth * 0.55), behavior: 'smooth' });
+  };
+
+  dragStart = (e) => {
+    const el = this.slider;
+    if (!el) return;
+    const startX = e.clientX, startLeft = el.scrollLeft;
+    let moved = false;
+    const move = (ev) => { moved = true; el.scrollLeft = startLeft - (ev.clientX - startX); };
+    const up = (ev) => {
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+      if (moved) { ev.preventDefault(); ev.stopPropagation(); }
+    };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up, true);
+  };
+
+  setField = (k) => (e) => {
+    const v = k === 'consent' ? e.target.checked : e.target.value;
+    this.setState(s => ({ form: Object.assign({}, s.form, { [k]: v, error: '', sent: false }) }));
+  };
+
+  submitNewsletter = (e) => {
+    e.preventDefault();
+    const f = this.state.form;
+    let error = '';
+    if (!f.first.trim() || !f.last.trim()) error = 'Please enter your first and last name.';
+    else if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email)) error = 'Please enter a valid email address.';
+    else if (!f.consent) error = 'Please accept the consent statement to subscribe.';
+    this.setState(s => ({ form: Object.assign({}, s.form, { error, sent: !error }) }));
+  };
+
+  renderVals() {
+    const { route, region, person, filter, query, year, form } = this.state;
+    const showBadges = this.props.showPlaceholderBadges ?? true;
+    const chapterTone = this.props.chapterTransitions ?? true;
+
+    const nav = [
+      { label: 'Home', href: '#/', key: 'home' },
+      { label: 'Products', href: '#/products', key: 'products' },
+      { label: 'Leadership', href: '#/leadership', key: 'leadership' },
+      { label: 'News', href: '#/news', key: 'news' }
+    ].map(n => {
+      const active = n.key === route || (route === 'article' && n.key === 'news');
+      return Object.assign({}, n, { color: active ? RED : '#000', underline: active ? 'scaleX(1)' : 'scaleX(0)' });
+    });
+
+    const r = REGIONS[region];
+    const regions = Object.keys(REGIONS).map(k => {
+      const it = REGIONS[k], active = k === region;
+      return Object.assign({}, it, {
+        fill: active ? RED : '#FFFFFF',
+        nodeFill: active ? '#FFFFFF' : RED,
+        textFill: active ? '#FFFFFF' : 'rgba(0,0,0,0.55)',
+        activate: this.go(k)
+      });
+    });
+
+    const TONES = [
+      { bg: '#FFFFFF', fg: '#000000', muted: 'rgba(0,0,0,0.62)', cat: RED, border: 'rgba(0,0,0,0.18)', ctaBorder: RED },
+      { bg: '#000000', fg: '#FFFFFF', muted: 'rgba(255,255,255,0.68)', cat: RED, border: '#000000', ctaBorder: RED },
+      { bg: RED, fg: '#FFFFFF', muted: 'rgba(255,255,255,0.84)', cat: '#FFFFFF', border: RED, ctaBorder: '#FFFFFF' }
+    ];
+    const news = NEWS.map((s, i) => Object.assign({}, s, TONES[i] || TONES[0], {
+      width: i === 0 ? 'clamp(520px, 46vw, 720px)' : 'clamp(340px, 26vw, 420px)',
+      titleSize: i === 0 ? '30px' : '22px',
+      delay: (100 + i * 120) + 'ms'
+    }));
+
+    const q = query.trim().toLowerCase();
+    const filteredNews = NEWS.filter(s =>
+      (filter === 'All' || s.category === filter) &&
+      (year === 'All years' || s.year === year) &&
+      (!q || (s.title + ' ' + s.excerpt).toLowerCase().includes(q))
+    );
+
+    return {
+      year: new Date().getFullYear(),
+      nav,
+      isHome: route === 'home',
+      isProducts: route === 'products',
+      isLeadership: route === 'leadership',
+      isNews: route === 'news',
+      isArticle: route === 'article',
+
+      regions,
+      region: Object.assign({}, r, { noPhoto: !r.hasPhoto }),
+
+      news,
+      filteredNews: filteredNews.map((s, i) => Object.assign({}, s, {
+        delay: (80 + i * 120) + 'ms',
+        hasThumb: !!s.image, noThumb: !s.image, thumb: s.image || ''
+      })),
+      emptySlots: new Array(Math.max(0, 3 - filteredNews.length) + (filteredNews.length === 3 ? 3 : 0)).fill(0).map((_, i) => ({ i })),
+      categories: CATEGORIES.map(c => ({
+        label: c,
+        select: () => this.setState({ filter: c }),
+        bg: c === filter ? '#fff' : 'transparent',
+        fg: c === filter ? '#000' : '#fff',
+        border: c === filter ? '#fff' : 'rgba(255,255,255,0.38)'
+      })),
+      query,
+      setQuery: (e) => this.setState({ query: e.target.value }),
+      setYear: (e) => this.setState({ year: e.target.value }),
+
+      chapters: CHAPTERS.map((c, i) => ({ num: c.num, name: c.name, href: '#/products/' + c.id, color: '#000', delay: (i * 1.7) + 's' })),
+      productChapters: PRODUCTS.map(p => {
+        const red = chapterTone && p.opening === 'red';
+        return Object.assign({}, p, {
+          openingBg: red ? RED : '#FFFFFF',
+          openingFg: red ? '#FFFFFF' : '#000000',
+          numColor: red ? '#FFFFFF' : RED,
+          hasDownloads: p.downloads.length > 0
+        });
+      }),
+      comparator: [
+        { need: 'Structural concrete and paving', rec: 'Cement', href: '#/products/cement' },
+        { need: 'Durability and lower portland cement demand', rec: 'Pozzolan', href: '#/products/pozzolan' },
+        { need: 'Jobsite-ready concrete mixes', rec: 'Ready Mix', href: '#/products/ready-mix' },
+        { need: 'Base, grading, concrete production and drainage', rec: 'Aggregates', href: '#/products/aggregates' }
+      ].map((c, i) => Object.assign({}, c, { rot: i * 90, delay: (80 + i * 90) + 'ms' })),
+
+      leaders: LEADERS.map((l, i) => ({
+        name: l.name,
+        title: l.title,
+        plateBg: i % 3 === 1 ? '#F1F0ED' : '#FFFFFF',
+        badge: showBadges ? (l.real ? 'Verified title' : 'Fictional placeholder — replace before launch') : '',
+        badgeColor: l.real ? 'rgba(0,0,0,0.5)' : RED,
+        open: () => this.setState({
+          person: {
+            name: l.name, title: l.title,
+            badge: l.real ? 'Verified title' : 'Fictional placeholder — replace before launch',
+            badgeColor: l.real ? 'rgba(0,0,0,0.5)' : RED,
+            bio: l.bio || 'Biography pending official approval.'
+          }
+        })
+      })),
+      person,
+      closePerson: () => this.setState({ person: null }),
+
+      sliderRef: (el) => { this.slider = el; },
+      slidePrev: this.slideBy(-1),
+      slideNext: this.slideBy(1),
+      dragStart: this.dragStart,
+
+      form: Object.assign({}, form, {
+        hasError: !!form.error,
+        emailBorder: form.error && form.error.indexOf('email') > -1 ? RED : 'rgba(255,255,255,0.4)'
+      }),
+      setFirst: this.setField('first'),
+      setLast: this.setField('last'),
+      setEmail: this.setField('email'),
+      setInterest: this.setField('interest'),
+      setConsent: this.setField('consent'),
+      submitNewsletter: this.submitNewsletter
+    };
+  }
+}
+</script>
+</body>
+</html>

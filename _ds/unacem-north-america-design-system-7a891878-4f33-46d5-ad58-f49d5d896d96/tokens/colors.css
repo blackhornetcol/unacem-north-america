@@ -1,0 +1,82 @@
+/* UNACEM North America — colour.
+   Three brand values only. Red 15% / Black 35% / White 50% by area.
+   Do not add hues. Hierarchy comes from scale and type, never from more colour. */
+
+:root{
+  /* ---- base ---- */
+  --unacem-red:#FF0000;          /* Pantone 485 C / 485 U — C0 M100 Y100 K0 */
+  --unacem-black:#000000;        /* Pantone Black C / Black U — K100 */
+  --unacem-white:#FFFFFF;
+
+  /* ---- functional neutrals (PROPOSAL — not in the brandbook, confirm with client) ----
+     Derived from Black at fixed alpha so nothing new enters the palette. */
+  --hairline:rgba(0,0,0,0.18);
+  --hairline-strong:rgba(0,0,0,0.42);
+  --hairline-inverse:rgba(255,255,255,0.24);
+  --hairline-inverse-strong:rgba(255,255,255,0.55);
+  --wash:rgba(0,0,0,0.05);          /* faintest possible card tint on white */
+  --wash-inverse:rgba(255,255,255,0.08);
+  --scrim:rgba(0,0,0,0.55);         /* photo protection scrim */
+  --scrim-hard:rgba(0,0,0,0.78);
+
+  /* ---- semantic: light surface (the 50% canvas, default) ---- */
+  --surface-page:var(--unacem-white);
+  --surface-card:var(--unacem-white);
+  --surface-block:var(--unacem-black);   /* the 35% dark block */
+  --surface-accent:var(--unacem-red);    /* the 15% red block */
+  --text-body:var(--unacem-black);
+  --text-heading:var(--unacem-black);
+  --text-accent:var(--unacem-red);
+  --text-muted:rgba(0,0,0,0.62);
+  --border-default:var(--hairline);
+  --border-strong:var(--unacem-black);
+
+  /* ---- semantic: dark surface ---- */
+  --on-dark-text:var(--unacem-white);
+  --on-dark-muted:rgba(255,255,255,0.68);
+  --on-dark-accent:var(--unacem-red);
+  --on-dark-border:var(--hairline-inverse);
+
+  /* ---- semantic: red surface ---- */
+  --on-red-text:var(--unacem-white);
+  --on-red-muted:rgba(255,255,255,0.80);
+  --on-red-border:rgba(255,255,255,0.40);
+
+  /* ---- interaction ---- */
+  --interactive:var(--unacem-red);
+  --interactive-hover:#D60000;     /* red darkened, not a new hue */
+  --interactive-press:#B30000;
+  --interactive-disabled:rgba(0,0,0,0.28);
+  --focus-ring:var(--unacem-red);
+  --focus-ring-inverse:var(--unacem-white);
+
+  /* ---- chromatic proportion, for reference in layout reviews ---- */
+  --ratio-white:50%; /* @kind other */
+  --ratio-black:35%; /* @kind other */
+  --ratio-red:15%; /* @kind other */
+}
+
+/* Dark section scope: drop this class on any block that sits on black. */
+.unacem-on-dark{
+  --surface-page:var(--unacem-black);
+  --surface-card:var(--unacem-black);
+  --text-body:var(--on-dark-text);
+  --text-heading:var(--on-dark-text);
+  --text-muted:var(--on-dark-muted);
+  --border-default:var(--hairline-inverse);
+  --border-strong:var(--unacem-white);
+  --focus-ring:var(--unacem-white);
+}
+
+/* Red section scope. */
+.unacem-on-red{
+  --surface-page:var(--unacem-red);
+  --surface-card:var(--unacem-red);
+  --text-body:var(--on-red-text);
+  --text-heading:var(--on-red-text);
+  --text-muted:var(--on-red-muted);
+  --text-accent:var(--unacem-white);
+  --border-default:var(--on-red-border);
+  --border-strong:var(--unacem-white);
+  --focus-ring:var(--unacem-white);
+}

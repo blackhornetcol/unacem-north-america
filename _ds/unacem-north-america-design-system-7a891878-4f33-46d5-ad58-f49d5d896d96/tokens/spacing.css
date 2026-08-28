@@ -1,0 +1,42 @@
+/* UNACEM North America — spacing.
+   The brandbook defines exactly one module: the "U" unit (the cap height of the
+   letter U in the wordmark) used for logo clear space and co-branding gaps.
+   Everything below the "U" block is a PROPOSAL — an 8pt scale — pending client
+   confirmation (see readme.md). */
+
+:root{
+  /* ---- the one real module ---- */
+  --u:1em;                 /* set --u on a lockup to the cap height of its "U" */
+  --u-clear:var(--u);      /* minimum clear space on all four sides of any lockup */
+  --u-half:calc(var(--u) / 2);  /* co-branding gap between UNACEM and a partner mark */
+
+  /* ---- 8pt layout scale (PROPOSAL) ---- */
+  --space-0:0px;
+  --space-1:4px;
+  --space-2:8px;
+  --space-3:16px;
+  --space-4:24px;
+  --space-5:32px;
+  --space-6:48px;
+  --space-7:64px;
+  --space-8:96px;
+  --space-9:128px;
+
+  /* ---- layout ---- */
+  --gutter:var(--space-4);
+  --page-margin:var(--space-6);
+  --page-margin-wide:var(--space-8);
+  --content-max:1200px;
+  --measure:66ch; /* @kind spacing */          /* body copy line length ceiling */
+  --grid-columns:12; /* @kind other */
+
+  /* ---- slide safe area, 1280x720 ---- */
+  --slide-margin-x:88px;
+  --slide-margin-y:72px;
+
+  /* ---- controls ---- */
+  --control-height:48px;   /* >= 44px touch target */
+  --control-height-sm:40px;
+  --control-padding-x:var(--space-4);
+  --hit-min:44px;
+}
