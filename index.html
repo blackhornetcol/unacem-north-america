@@ -33,6 +33,63 @@ a:hover{color:var(--unacem-red)}
 @keyframes u-cue{to{opacity:0;transform:translateY(20px)}}
 @keyframes u-line{to{transform:translateX(0)}}
 input[type="search"]::placeholder{color:rgba(255,255,255,0.72)}
+.u-nav-cell{position:relative;overflow:hidden;isolation:isolate;transition:color 200ms cubic-bezier(0.22,1,0.36,1)}
+.u-nav-cell::before{content:"";position:absolute;left:0;right:0;bottom:0;height:100%;background:#FF0000;transform:scaleY(0);transform-origin:bottom;transition:transform 380ms cubic-bezier(0.22,1,0.36,1);z-index:-1}
+.u-nav-cell::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:#FF0000;transform:scaleX(0);transform-origin:left;transition:transform 100ms linear;z-index:-1}
+.u-nav-cell:hover,.u-nav-cell:focus-visible{color:#fff}
+.u-nav-cell:hover::before,.u-nav-cell:focus-visible::before{transform:scaleY(1);transition-delay:80ms}
+.u-nav-cell:hover::after,.u-nav-cell:focus-visible::after{transform:scaleX(1)}
+.u-nav-cell:focus-visible{outline:2px solid #FF0000;outline-offset:3px}
+.u-nav-cell > span.u-nav-label{display:block;transition:transform 180ms cubic-bezier(0.22,1,0.36,1) 120ms}
+.u-nav-cell:hover > span.u-nav-label,.u-nav-cell:focus-visible > span.u-nav-label{transform:translateY(-1.5px)}
+.u-nav-cell:active::before{transform:scaleY(1);transition-duration:120ms}
+.u-nav-mark{position:relative;display:grid;place-items:center;overflow:hidden;isolation:isolate}
+.u-nav-mark::before{content:"";position:absolute;inset:0;background:#000;transform:scaleY(0);transform-origin:bottom;transition:transform 380ms cubic-bezier(0.22,1,0.36,1);z-index:-1}
+.u-nav-mark:hover::before,.u-nav-mark:focus-visible::before{transform:scaleY(1)}
+.u-nav-mark:focus-visible{outline:2px solid #FF0000;outline-offset:3px}
+.u-nav-glyph{width:26px;height:26px;background:#FF0000;-webkit-mask:url(assets/logos/isotype-red.svg) center/contain no-repeat;mask:url(assets/logos/isotype-red.svg) center/contain no-repeat;transition:background 260ms ease,transform 380ms cubic-bezier(0.22,1,0.36,1)}
+.u-nav-mark:hover .u-nav-glyph,.u-nav-mark:focus-visible .u-nav-glyph{background:#fff;transform:scale(1.035)}
+.u-nav-contact{background:#FF0000;color:#fff}
+.u-nav-contact::before{background:#000}
+.u-nav-contact::after{display:none}
+.u-nav-contact,.u-nav-contact:hover,.u-nav-contact:focus-visible{color:#fff}
+.u-nav-contact:hover,.u-nav-contact:focus-visible{border-color:#fff !important}
+.u-nav-contact:hover{outline:none;box-shadow:none}
+.u-nav-contact:focus:not(:focus-visible){outline:none}
+.u-nav-contact:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.u-nav-contact > span.u-nav-label{position:relative;z-index:2}
+@media (prefers-reduced-motion: reduce){
+  .u-nav-mark::before{transition:none}
+  .u-nav-mark:hover::before,.u-nav-mark:focus-visible::before{transform:scaleY(1)}
+  .u-nav-glyph{transition:none}
+  .u-nav-mark:hover .u-nav-glyph,.u-nav-mark:focus-visible .u-nav-glyph{transform:none}
+}
+@media (hover: none){.u-nav-cell:hover::before{transform:scaleY(0)}.u-nav-cell:hover{color:inherit}}
+.u-scroll{position:absolute;left:clamp(24px,3vw,52px);bottom:clamp(28px,5vh,52px);z-index:5;display:flex;flex-direction:column;align-items:center;gap:14px;pointer-events:none;transition:opacity 300ms ease,transform 300ms ease}
+.u-scroll.is-hidden{opacity:0;transform:translateY(8px)}
+.u-scroll__label{color:#fff;font-family:var(--font-body);font-size:10px;font-weight:500;letter-spacing:0.22em;writing-mode:vertical-rl;transform:rotate(180deg)}
+.u-scroll__track{position:relative;display:block;width:2px;height:76px;overflow:hidden;background:rgba(255,255,255,0.25)}
+.u-scroll__line{position:absolute;inset:0;background:#FF0000;transform:translateY(-100%);animation:u-scrollline 2.2s cubic-bezier(0.65,0,0.35,1) infinite}
+.u-scroll.is-hidden .u-scroll__line{animation-play-state:paused}
+@keyframes u-scrollline{0%{transform:translateY(-100%);opacity:0}12%{opacity:1}55%{transform:translateY(0);opacity:1}85%,100%{transform:translateY(100%);opacity:0}}
+.u-top{position:fixed;right:clamp(20px,2.5vw,32px);bottom:clamp(20px,2.5vw,32px);width:52px;height:52px;display:grid;place-items:center;background:#000;color:#fff;border:1px solid rgba(255,255,255,0.7);border-radius:0;z-index:60;cursor:pointer;padding:0;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(12px);transition:opacity 300ms ease,transform 300ms ease,visibility 300ms,background-color 300ms ease,border-color 300ms ease}
+.u-top.is-visible{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
+.u-top:hover,.u-top:focus-visible{background:#FF0000;border-color:#FF0000}
+.u-top:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.u-top svg{transition:transform 300ms cubic-bezier(0.22,1,0.36,1)}
+.u-top:hover svg,.u-top:focus-visible svg{transform:translateY(-3px)}
+@media (prefers-reduced-motion: reduce){
+  .u-scroll__line{animation:none;transform:translateY(0);opacity:1}
+  .u-top,.u-top svg{transition:opacity 1ms linear,visibility 1ms linear}
+  .u-top:hover svg,.u-top:focus-visible svg{transform:none}
+}
+@media (prefers-reduced-motion: reduce){
+  .u-nav-cell::after{display:none}
+  .u-nav-cell::before{transition:none}
+  .u-nav-cell:hover::before,.u-nav-cell:focus-visible::before{transform:scaleY(1);transition-delay:0ms}
+  .u-nav-cell > span.u-nav-label{transition:none}
+  .u-nav-cell:hover > span.u-nav-label,.u-nav-cell:focus-visible > span.u-nav-label{transform:none}
+}
 @keyframes u-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 @keyframes u-arrow{0%,100%{transform:translateY(0);opacity:1}50%{transform:translateY(5px);opacity:0.45}}
 @keyframes u-glow{0%,100%{background:transparent}10%{background:rgba(255,0,0,0.09)}26%{background:transparent}}
@@ -56,17 +113,17 @@ main h1,main h2,main h3,footer h2{animation:u-rise 760ms cubic-bezier(0.22,1,0.3
 <div style="min-height:100vh;background:#fff;overflow-x:clip">
 
 <nav style="position:fixed;top:22px;left:0;right:0;z-index:90;display:flex;justify-content:center;gap:12px;pointer-events:none;font-family:var(--font-body)">
-  <a href="#/" aria-label="UNACEM North America — home" style="pointer-events:auto;width:52px;height:52px;background:rgba(255,255,255,0.66);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);border:1px solid rgba(255,255,255,0.6);display:flex;align-items:center;justify-content:center" style-hover="border-color:#000">
-    <img src="assets/logos/isotype-red.svg" alt="" style="width:26px;height:26px;display:block">
+  <a href="#/" aria-label="UNACEM North America Home" class="u-nav-mark" style="pointer-events:auto;width:52px;height:52px;background:rgba(255,255,255,0.66);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);border:1px solid rgba(255,255,255,0.6);display:flex;align-items:center;justify-content:center" style-hover="border-color:#000">
+    <span class="u-nav-glyph" aria-hidden="true"></span>
   </a>
   <div style="pointer-events:auto;height:52px;background:rgba(255,255,255,0.66);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);border:1px solid rgba(255,255,255,0.6);display:flex;align-items:stretch;padding:0 6px;gap:0">
     <sc-for list="{{ nav }}" as="n" hint-placeholder-count="6">
-      <a href="{{ n.href }}" style="display:flex;align-items:center;padding:0 13px;font-family:var(--font-body);font-size:12.5px;font-weight:500;letter-spacing:0.05em;white-space:nowrap;text-transform:uppercase;position:relative;color:{{ n.color }};transition:color 240ms var(--ease-standard)">
-        {{ n.label }}
-        <span style="position:absolute;left:13px;right:13px;bottom:13px;height:2px;background:var(--unacem-red);transform:{{ n.underline }};transform-origin:left;transition:transform 260ms var(--ease-standard)"></span>
+      <a href="{{ n.href }}" class="u-nav-cell" aria-current="{{ n.current }}" style="display:flex;align-items:center;padding:0 15px;font-family:var(--font-body);font-size:12.5px;font-weight:{{ n.weight }};letter-spacing:0.05em;white-space:nowrap;text-transform:uppercase;color:#000">
+        <span class="u-nav-label">{{ n.label }}</span>
+        <span aria-hidden="true" style="position:absolute;left:15px;right:15px;bottom:11px;height:2px;background:var(--unacem-red);transform:{{ n.underline }};transform-origin:left;transition:transform 260ms var(--ease-standard)"></span>
       </a>
     </sc-for>
-    <a href="https://unacem-na.com/contact-us/" target="_blank" rel="noopener" style="display:flex;align-items:center;margin:8px 2px 8px 10px;padding:0 18px;border:1px solid var(--unacem-red);color:var(--unacem-red);font-family:var(--font-body);font-size:12.5px;font-weight:700;letter-spacing:0.06em;white-space:nowrap;text-transform:uppercase;transition:background 240ms var(--ease-standard),color 240ms var(--ease-standard)" style-hover="background:var(--unacem-red);color:#fff">Contact</a>
+    <a href="https://unacem-na.com/contact-us/" target="_blank" rel="noopener" class="u-nav-cell u-nav-contact" style="display:flex;align-items:center;margin:8px 2px 8px 10px;padding:0 18px;border:1px solid var(--unacem-red);font-family:var(--font-body);font-size:12.5px;font-weight:700;letter-spacing:0.06em;white-space:nowrap;text-transform:uppercase"><span class="u-nav-label">Contact</span></a>
   </div>
 </nav>
 
@@ -80,7 +137,7 @@ main h1,main h2,main h3,footer h2{animation:u-rise 760ms cubic-bezier(0.22,1,0.3
     </sc-if>
 
     <sc-for list="{{ heroLayers }}" as="s" hint-placeholder-count="1">
-      <video src="{{ s.video }}" poster="{{ s.poster }}" preload="{{ s.preload }}" muted="{{ yes }}" loop="{{ yes }}" playsInline="{{ yes }}" onEnded="{{ heroReplay }}" data-hero="1" aria-hidden="true" ref="{{ s.setRef }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000;opacity:{{ s.opacity }};transition:opacity 900ms linear"></video>
+      <video poster="{{ s.poster }}" preload="{{ s.preload }}" muted="{{ yes }}" loop="{{ yes }}" playsInline="{{ yes }}" onEnded="{{ heroReplay }}" data-hero="1" aria-hidden="true" ref="{{ s.setRef }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000;opacity:{{ s.opacity }};transition:opacity 900ms linear"></video>
     </sc-for>
 
     <sc-for list="{{ heroPreviews }}" as="pv" hint-placeholder-count="4">
@@ -90,12 +147,13 @@ main h1,main h2,main h3,footer h2{animation:u-rise 760ms cubic-bezier(0.22,1,0.3
     <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.74) 0%,rgba(0,0,0,0.38) 30%,rgba(0,0,0,0.06) 58%,rgba(0,0,0,0.16) 100%)"></div>
     <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.46) 0%,rgba(0,0,0,0.12) 42%,rgba(0,0,0,0) 66%)"></div>
 
-    <svg viewBox="0 0 120 600" preserveAspectRatio="none" aria-hidden="true" style="position:absolute;left:80px;bottom:214px;width:2px;height:min(300px,26vh);pointer-events:none">
-      <path d="M60 0 V600" fill="none" stroke="#FF0000" stroke-width="120" stroke-dasharray="600" style="animation:u-draw 1100ms linear 700ms both"></path>
-    </svg>
+    <div class="u-scroll {{ scrollCueClass }}" aria-hidden="true" style="bottom:{{ scrollCueBottom }}">
+      <span class="u-scroll__label">Scroll</span>
+      <span class="u-scroll__track"><span class="u-scroll__line"></span></span>
+    </div>
 
     <div style="position:relative;z-index:10;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:150px 80px 250px">
-      <div key="{{ hero.id }}" style="max-width:760px;margin-top:auto;animation:u-rise 720ms cubic-bezier(0.22,1,0.36,1) both">
+      <div key="{{ hero.id }}" style="max-width:760px;margin-top:auto;margin-left:clamp(72px,7vw,120px);animation:u-rise 720ms cubic-bezier(0.22,1,0.36,1) both">
         <p style="margin:0 0 32px;font-family:var(--font-body);font-size:11.5px;font-weight:500;letter-spacing:0.24em;text-transform:uppercase;color:#fff">{{ hero.eyebrow }}</p>
         <h1 style="margin:0 0 28px;font-family:var(--font-display);font-weight:400;text-transform:uppercase;line-height:0.92;letter-spacing:0.005em;font-size:clamp(36px,4.2vw,68px);color:#fff;animation:none">{{ hero.titleLead }}<span style="color:var(--unacem-red)">{{ hero.titleAccent }}</span></h1>
         <p style="margin:0 0 40px;max-width:56ch;font-family:var(--font-body);font-size:17px;line-height:1.7;color:rgba(255,255,255,0.84)">{{ hero.description }}</p>
@@ -122,9 +180,9 @@ main h1,main h2,main h3,footer h2{animation:u-rise 760ms cubic-bezier(0.22,1,0.3
       </div>
     </sc-if>
 
-    <div onMouseLeave="{{ productLeave }}" style="position:absolute;z-index:20;bottom:0;left:50%;transform:translateX(-50%);width:min(1240px,calc(100% - 80px));min-height:130px;display:grid;grid-template-columns:repeat(4,1fr);background:rgba(255,255,255,0.94);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)">
+    <div ref="{{ stripRef }}" onMouseLeave="{{ productLeave }}" style="position:absolute;z-index:20;bottom:0;left:50%;transform:translateX(-50%);width:min(1240px,calc(100% - 80px));min-height:130px;display:grid;grid-template-columns:repeat(4,1fr);background:rgba(255,255,255,0.94);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)">
       <sc-for list="{{ heroProducts }}" as="p" hint-placeholder-count="4">
-        <a href="{{ p.href }}" onMouseEnter="{{ p.enter }}" onFocus="{{ p.enter }}" onBlur="{{ productLeave }}" style="display:flex;flex-direction:column;gap:12px;padding:22px 24px 24px;border-top:2px solid {{ p.topLine }};border-left:1px solid {{ p.divider }};background:{{ p.bg }};color:#000;cursor:pointer;transition:border-color 200ms var(--ease-standard),background 200ms var(--ease-standard)" style-hover="border-top-color:var(--unacem-red);background:#fff;color:#000">
+        <a href="{{ p.href }}" onMouseEnter="{{ p.hoverEnter }}" onFocus="{{ p.focusEnter }}" onBlur="{{ productLeave }}" style="display:flex;flex-direction:column;gap:12px;padding:22px 24px 24px;border-top:2px solid transparent;border-top-color:{{ p.topLine }};border-left:1px solid var(--hairline);border-left-color:{{ p.divider }};background:{{ p.bg }};color:#000;cursor:pointer;transition:border-color 200ms var(--ease-standard),background 200ms var(--ease-standard)" style-hover="border-top-color:var(--unacem-red);background:#fff;color:#000">
           <span style="font-family:var(--font-numeral);font-size:12px;letter-spacing:0.08em;color:var(--unacem-red)">{{ p.num }}</span>
           <span style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;font-family:var(--font-display);text-transform:uppercase;font-size:17px;line-height:1.0;font-weight:{{ p.weight }}">{{ p.name }}<span style="font-family:var(--font-body);font-size:14px;color:var(--unacem-red);transform:translateX({{ p.arrow }});transition:transform 200ms var(--ease-standard)">→</span></span>
           <span style="font-family:var(--font-body);font-size:13px;line-height:1.55;color:rgba(0,0,0,0.66)">{{ p.body }}</span>
@@ -142,7 +200,7 @@ main h1,main h2,main h3,footer h2{animation:u-rise 760ms cubic-bezier(0.22,1,0.3
       <p style="margin:0;max-width:60ch;font-size:17px;line-height:1.7;color:rgba(0,0,0,0.72);text-wrap:pretty">Cement, ready mix concrete, aggregates and pozzolan, delivered where you need them across the Southwest with consistent quality and technical support.</p>
     </div>
 
-    <div style="display:grid;grid-template-columns:7fr 5fr;gap:1px;background:var(--hairline);max-width:1320px;margin-inline:auto">
+    <div style="display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:1px;background:var(--hairline);max-width:1320px;margin-inline:auto">
       <article style="grid-column:1;background:#fff;padding:40px;display:flex;flex-direction:column;gap:28px" style-hover="background:#fff">
         <div style="aspect-ratio:16/10;overflow:hidden;background:#F1F0ED">
           <video src="assets/video/cement.mp4" autoPlay="{{ yes }}" muted="{{ yes }}" loop="{{ yes }}" playsInline="{{ yes }}" style="width:100%;height:100%;object-fit:cover;animation:u-float 7s ease-in-out infinite" style-hover="animation-play-state:paused"></video>
@@ -172,7 +230,7 @@ main h1,main h2,main h3,footer h2{animation:u-rise 760ms cubic-bezier(0.22,1,0.3
       </article>
 
       <article style="grid-column:1;background:#fff;padding:40px;display:flex;flex-direction:row-reverse;gap:36px;align-items:center">
-        <div style="flex:0 0 52%;min-width:280px;aspect-ratio:16/11;overflow:hidden;background:#F1F0ED">
+        <div style="flex:0 0 52%;min-width:200px;aspect-ratio:16/11;overflow:hidden;background:#F1F0ED">
           <video src="assets/video/aggregates.mp4" autoPlay="{{ yes }}" muted="{{ yes }}" loop="{{ yes }}" playsInline="{{ yes }}" style="width:100%;height:100%;object-fit:cover;animation:u-float 9s ease-in-out infinite" style-hover="animation-play-state:paused"></video>
         </div>
         <div style="flex:1 1 48%;min-width:0;display:flex;gap:24px;align-items:flex-start">
@@ -202,25 +260,42 @@ main h1,main h2,main h3,footer h2{animation:u-rise 760ms cubic-bezier(0.22,1,0.3
   </section>
 
   <section id="customer-centricity" data-screen-label="Customer centricity" style="padding:clamp(128px,13vw,200px) 80px;background:#fff;border-top:1px solid var(--hairline)">
-    <div style="max-width:1320px;margin-inline:auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(72px,8vw,140px);align-items:start">
+    <div style="max-width:1320px;margin-inline:auto">
 
-      <div style="display:flex;flex-direction:column;gap:56px;animation:u-rise 800ms cubic-bezier(0.22,1,0.36,1) both;animation-timeline:view();animation-range:entry 2% entry 50%">
-        <div>
-          <p style="margin:0 0 28px;font-family:var(--font-numeral);font-size:11.5px;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:var(--unacem-red)">02 · Customer centricity</p>
-          <h2 style="margin:0 0 32px;font-family:var(--font-display);text-transform:uppercase;line-height:0.94;font-size:clamp(30px,3.7vw,56px)">Built around<br>the people<br>we serve</h2>
-          <span style="display:block;width:64px;height:4px;background:var(--unacem-red)"></span>
-        </div>
-        <p style="margin:0;max-width:58ch;font-size:17px;line-height:1.75;color:rgba(0,0,0,0.74)">We put our customers at the heart of our actions, understanding and anticipating their needs to provide sustainable solutions</p>
-        <div style="display:flex;flex-direction:column;gap:20px;border-top:1px solid var(--hairline);padding-top:40px">
-          <h3 style="margin:0;font-family:var(--font-display);text-transform:uppercase;font-size:22px;line-height:1.0">Talk to our team</h3>
-          <p style="margin:0;max-width:56ch;font-size:16px;line-height:1.75;color:rgba(0,0,0,0.68)">Questions about products, deliveries, technical support or your experience with UNACEM North America</p>
-          <p style="margin:8px 0 0;font-family:var(--font-numeral);font-size:26px;letter-spacing:0.02em"><a href="tel:+14802196670">(480) 219-6670</a></p>
+      <div style="max-width:760px;margin-bottom:clamp(80px,8vw,120px);animation:u-rise 800ms cubic-bezier(0.22,1,0.36,1) both;animation-timeline:view();animation-range:entry 2% entry 50%">
+        <p style="margin:0 0 28px;font-family:var(--font-body);font-size:11.5px;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:var(--unacem-red)">Customer experience</p>
+        <h2 style="margin:0 0 32px;font-family:var(--font-display);text-transform:uppercase;line-height:0.94;font-size:clamp(30px,3.7vw,56px)">Customer centricity<br>at UNACEM<br><span style="color:var(--unacem-red)">North America</span></h2>
+        <span style="display:block;width:64px;height:4px;background:var(--unacem-red);margin-bottom:32px"></span>
+        <p style="margin:0;max-width:60ch;font-size:17px;line-height:1.75;color:rgba(0,0,0,0.74)">At UNACEM North America, every interaction is an opportunity to build trust. We invest in the people, technology, and processes that help us serve our customers better.</p>
+      </div>
+
+      <div onMouseLeave="{{ stageLeave }}" style="position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(40px,4vw,72px);margin-bottom:clamp(80px,8vw,120px)">
+        <span aria-hidden="true" style="position:absolute;left:0;right:0;top:26px;height:2px;background:var(--hairline)"></span>
+        <span aria-hidden="true" style="position:absolute;left:0;top:26px;height:2px;background:var(--unacem-red);width:{{ stageLineWidth }};transition:width 420ms var(--ease-standard)"></span>
+        <sc-for list="{{ stages }}" as="s" hint-placeholder-count="3">
+          <div tabIndex="{{ zero }}" onMouseEnter="{{ s.enter }}" onFocus="{{ s.enter }}" onBlur="{{ stageLeave }}" style="position:relative;padding-top:70px;cursor:default;outline-offset:6px">
+            <span style="position:absolute;top:0;left:0;width:54px;height:54px;display:flex;align-items:center;justify-content:center;box-sizing:border-box;border:2px solid var(--hairline-strong);border-color:{{ s.ring }};background:{{ s.fill }};color:{{ s.numColor }};font-family:var(--font-numeral);font-size:16px;transition:background 300ms var(--ease-standard),border-color 300ms var(--ease-standard),color 300ms var(--ease-standard)">{{ s.num }}</span>
+            <h3 style="margin:0 0 16px;font-family:var(--font-display);text-transform:uppercase;font-size:clamp(20px,1.8vw,26px);line-height:1.02">{{ s.name }}</h3>
+            <p style="margin:0;max-width:44ch;font-size:16px;line-height:1.75;color:rgba(0,0,0,0.7)">{{ s.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+
+      <p style="margin:0 0 clamp(96px,10vw,150px);max-width:24ch;font-family:var(--font-display);text-transform:uppercase;font-size:clamp(22px,2.4vw,36px);line-height:1.1;border-left:4px solid var(--unacem-red);padding-left:32px">Customer centricity is an ongoing commitment to listen, adapt, and deliver a better experience at every stage</p>
+
+      <div style="border-top:1px solid var(--hairline);padding-top:clamp(56px,6vw,88px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(72px,8vw,140px);align-items:start">
+
+      <div style="display:flex;flex-direction:column;gap:36px">
+        <h3 style="margin:0;font-family:var(--font-display);text-transform:uppercase;font-size:clamp(24px,2.4vw,34px);line-height:1.02">Share a request or feedback</h3>
+        <div style="display:flex;flex-direction:column;gap:20px;border-top:1px solid var(--hairline);padding-top:36px">
+          <p style="margin:0;font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(0,0,0,0.6)">Talk to our team</p>
+          <p style="margin:0;font-family:var(--font-numeral);font-size:26px;letter-spacing:0.02em"><a href="tel:+14802196670">(480) 219-6670</a></p>
           <p style="margin:0;font-size:16px;line-height:1.7;color:rgba(0,0,0,0.68)">19001 N Scottsdale Rd #420<br>Scottsdale, AZ 85255</p>
         </div>
       </div>
 
       <form onSubmit="{{ submitContact }}" style="display:flex;flex-direction:column;gap:38px;animation:u-rise 800ms cubic-bezier(0.22,1,0.36,1) 140ms both;animation-timeline:view();animation-range:entry 2% entry 50%">
-        <h3 style="margin:0;font-family:var(--font-display);text-transform:uppercase;font-size:clamp(22px,2vw,30px);line-height:1.0">How can we help</h3>
+        <p style="margin:0;font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(0,0,0,0.6)">How can we help</p>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px 40px">
           <label style="display:flex;flex-direction:column;gap:12px;font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(0,0,0,0.6)">Full name *
             <input type="text" value="{{ contact.name }}" onChange="{{ setCName }}" aria-required="true" style="height:44px;padding:0 2px;border:0;border-bottom:1px solid {{ contact.nameBorder }};background:transparent;font-family:var(--font-body);font-size:16px;color:#000;border-radius:0;transition:border-color 240ms var(--ease-standard)">
@@ -278,6 +353,7 @@ main h1,main h2,main h3,footer h2{animation:u-rise 760ms cubic-bezier(0.22,1,0.3
         </sc-if>
         <button type="submit" style="align-self:flex-start;height:52px;padding:0 28px;background:var(--unacem-red);color:#fff;border:0;font-family:var(--font-body);font-size:14px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:background 240ms var(--ease-standard)" style-hover="background:#D60000">Send your request →</button>
       </form>
+      </div>
     </div>
   </section>
 
@@ -377,13 +453,31 @@ main h1,main h2,main h3,footer h2{animation:u-rise 760ms cubic-bezier(0.22,1,0.3
 
       <div style="display:flex;flex-direction:column;gap:40px;max-width:720px;margin-bottom:clamp(72px,7vw,110px)">
         <div>
-          <p style="margin:0 0 28px;font-family:var(--font-numeral);font-size:11.5px;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:var(--unacem-red)">05 · Sustainability</p>
-          <h2 style="margin:0 0 32px;font-family:var(--font-display);text-transform:uppercase;line-height:0.94;font-size:clamp(30px,3.7vw,56px)">Building<br>performance with<br><span style="color:var(--unacem-red)">a lighter footprint</span></h2>
+          <p style="margin:0 0 28px;font-family:var(--font-body);font-size:11.5px;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:var(--unacem-red)">Sustainability</p>
+          <h2 style="margin:0 0 32px;font-family:var(--font-display);text-transform:uppercase;line-height:0.94;font-size:clamp(30px,3.7vw,56px)">Sustainability<br>at UNACEM<br><span style="color:var(--unacem-red)">North America</span></h2>
           <span style="display:block;width:64px;height:4px;background:var(--unacem-red)"></span>
         </div>
-        <p style="margin:0;max-width:56ch;font-size:17px;line-height:1.75;color:rgba(0,0,0,0.74)">UNACEM North America works to reduce environmental impact through responsible resource use, more efficient production and lower-carbon building material solutions</p>
+        <div>
+          <h3 style="margin:0 0 20px;font-family:var(--font-display);text-transform:uppercase;font-size:clamp(18px,1.6vw,22px);line-height:1.02">Our commitment</h3>
+          <p style="margin:0;max-width:58ch;font-size:17px;line-height:1.75;color:rgba(0,0,0,0.74)">We’re working toward a clear goal: 500 kg of CO₂ per ton of cementitious material by 2030, on the path to carbon neutrality by 2045.</p>
+        </div>
         <a href="https://unacem-na.com/sustainability/" target="_blank" rel="noopener" style="align-self:flex-start;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;border-bottom:2px solid var(--unacem-red);padding-bottom:5px">Explore our sustainability commitments →</a>
       </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--hairline);margin-bottom:clamp(80px,8vw,120px)">
+        <div style="background:#fff;padding:44px 48px 48px;display:flex;flex-direction:column;gap:18px;border-top:4px solid var(--unacem-red)">
+          <p style="margin:0;font-family:var(--font-numeral);font-size:clamp(38px,4.4vw,64px);line-height:0.9">500 kg CO₂</p>
+          <p style="margin:0;font-family:var(--font-body);font-size:11.5px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(0,0,0,0.62)">Per ton of cementitious material</p>
+          <p style="margin:auto 0 0;font-family:var(--font-numeral);font-size:22px;color:var(--unacem-red)">2030</p>
+        </div>
+        <div style="background:#fff;padding:44px 48px 48px;display:flex;flex-direction:column;gap:18px;border-top:4px solid #000">
+          <p style="margin:0;font-family:var(--font-display);text-transform:uppercase;font-size:clamp(26px,2.8vw,40px);line-height:0.96">Carbon neutrality</p>
+          <p style="margin:0;font-family:var(--font-body);font-size:11.5px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(0,0,0,0.62)">Across our operations</p>
+          <p style="margin:auto 0 0;font-family:var(--font-numeral);font-size:22px;color:var(--unacem-red)">2045</p>
+        </div>
+      </div>
+
+      <h3 style="margin:0 0 clamp(48px,5vw,72px);font-family:var(--font-display);text-transform:uppercase;font-size:clamp(20px,2vw,28px);line-height:1.02">How we’re getting there</h3>
 
       <div style="display:grid;grid-template-columns:54fr 46fr;gap:clamp(48px,5vw,88px);align-items:start">
 
@@ -397,7 +491,7 @@ main h1,main h2,main h3,footer h2{animation:u-rise 760ms cubic-bezier(0.22,1,0.3
       <div onMouseLeave="{{ pillarLeave }}" style="position:relative;padding-left:40px">
         <span aria-hidden="true" style="position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--unacem-red);transform-origin:top;animation:u-growy 900ms var(--ease-standard) both;animation-timeline:view();animation-range:entry 0% cover 55%"></span>
         <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="5">
-          <div tabIndex="{{ zero }}" role="button" aria-label="{{ p.aria }}" onMouseEnter="{{ p.enter }}" onFocus="{{ p.enter }}" onBlur="{{ pillarLeave }}" style="border-top:2px solid {{ p.line }};padding:36px 0 40px;display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:baseline;cursor:pointer;outline-offset:4px;transition:border-color 260ms var(--ease-standard);animation:u-rise 780ms cubic-bezier(0.22,1,0.36,1) {{ p.delay }} both;animation-timeline:view();animation-range:entry 2% entry 55%">
+          <div tabIndex="{{ zero }}" role="button" aria-label="{{ p.aria }}" onMouseEnter="{{ p.enter }}" onFocus="{{ p.enter }}" onBlur="{{ pillarLeave }}" style="border-top:2px solid var(--hairline);border-top-color:{{ p.line }};padding:36px 0 40px;display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:baseline;cursor:pointer;outline-offset:4px;transition:border-color 260ms var(--ease-standard);animation:u-rise 780ms cubic-bezier(0.22,1,0.36,1) {{ p.delay }} both;animation-timeline:view();animation-range:entry 2% entry 55%">
             <span style="font-family:var(--font-numeral);font-size:15px;color:{{ p.numColor }}">{{ p.num }}</span>
             <div>
               <h3 style="margin:0 0 14px;display:flex;align-items:center;gap:14px;font-family:var(--font-display);text-transform:uppercase;font-size:22px;line-height:1.0;font-weight:{{ p.weight }}">{{ p.name }}<span aria-hidden="true" style="display:block;width:{{ p.markWidth }};height:2px;background:#000;transition:width 260ms var(--ease-standard)"></span></h3>
@@ -409,12 +503,9 @@ main h1,main h2,main h3,footer h2{animation:u-rise 760ms cubic-bezier(0.22,1,0.3
       </div>
     </div>
 
-    <div style="max-width:1320px;margin:clamp(96px,10vw,144px) auto 0;border-top:4px solid var(--unacem-red);padding-top:48px;display:grid;grid-template-columns:1fr 1.4fr;gap:clamp(48px,6vw,96px);align-items:start">
-      <div>
-        <p style="margin:0 0 20px;font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--unacem-red)">Energy performance · 2025</p>
-        <h3 style="margin:0;font-family:var(--font-display);text-transform:uppercase;font-size:clamp(20px,2vw,26px);line-height:1.04">Drake Cement Plant earns its sixth consecutive ENERGY STAR® Plant Certification</h3>
-      </div>
-      <p style="margin:0;max-width:62ch;font-size:17px;line-height:1.75;color:rgba(0,0,0,0.7)">The certification places the facility among the top 25 percent of comparable cement plants nationwide for energy performance.</p>
+    <div style="max-width:1320px;margin:clamp(96px,10vw,144px) auto 0;border-top:1px solid var(--hairline);padding-top:clamp(56px,6vw,80px);display:grid;grid-template-columns:1fr 1.3fr;gap:clamp(48px,6vw,96px);align-items:start">
+      <h3 style="margin:0;font-family:var(--font-display);text-transform:uppercase;font-size:clamp(22px,2.2vw,32px);line-height:1.02">A team effort</h3>
+      <p style="margin:0;max-width:64ch;font-size:17px;line-height:1.75;color:rgba(0,0,0,0.74)">Sustainability is everyone’s responsibility at UNACEM. Every action moves us closer to a more sustainable future for our business, our communities, and the planet.</p>
     </div>
   </section>
 
@@ -501,7 +592,7 @@ main h1,main h2,main h3,footer h2{animation:u-rise 760ms cubic-bezier(0.22,1,0.3
       <div style="padding:110px 80px 130px;background:#fff">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;margin-bottom:96px">
           <div style="aspect-ratio:16/11;overflow:hidden;background:#F1F0ED">
-            <video src="{{ p.video }}" autoPlay="{{ yes }}" muted="{{ yes }}" loop="{{ yes }}" playsInline="{{ yes }}" style="width:100%;height:100%;object-fit:cover"></video>
+            <video ref="{{ p.setVideo }}" autoPlay="{{ yes }}" muted="{{ yes }}" loop="{{ yes }}" playsInline="{{ yes }}" style="width:100%;height:100%;object-fit:cover"></video>
           </div>
           <div>
             <h2 style="margin:0 0 28px;font-family:var(--font-display);text-transform:uppercase;line-height:0.94;font-size:clamp(28px,3vw,46px)">{{ p.headline }}</h2>
@@ -565,36 +656,91 @@ main h1,main h2,main h3,footer h2{animation:u-rise 760ms cubic-bezier(0.22,1,0.3
 
 <sc-if value="{{ isLeadership }}">
 <main data-screen-label="Leadership">
-  <section style="padding:180px 80px 110px;background:#fff;position:relative;overflow:hidden">
-    <p style="margin:0 0 24px;font-family:var(--font-numeral);font-size:12px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--unacem-red)">Leadership · One company. One culture.</p>
-    <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:end">
-      <h1 style="margin:0;font-family:var(--font-display);text-transform:uppercase;line-height:0.92;font-size:clamp(40px,5.4vw,92px)">Leadership<br>that builds<br><span style="color:var(--unacem-red)">with purpose</span></h1>
-      <p style="margin:0;font-size:18px;line-height:1.6;color:rgba(0,0,0,0.72)">A shared commitment to people, performance, integrity and sustainable growth guides how UNACEM North America moves forward.</p>
-    </div>
-    <img src="assets/graphics/edifications-black.svg" alt="" style="display:block;width:100%;height:110px;object-fit:cover;object-position:left bottom;margin-top:72px;opacity:0.9;mask-image:linear-gradient(#000,#000);-webkit-mask-image:linear-gradient(#000,#000);mask-repeat:no-repeat;animation:u-cols 1500ms steps(16,end) both;animation-timeline:view();animation-range:entry 0% entry 70%">
-  </section>
-
-  <section style="padding:0 80px 40px;background:#fff">
-    <p style="margin:0 0 40px;display:inline-flex;align-items:center;gap:12px;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;border:1px solid var(--unacem-red);color:var(--unacem-red);padding:10px 16px">Prototype notice · portraits and most profiles are placeholders</p>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--hairline)">
-      <sc-for list="{{ leaders }}" as="l" hint-placeholder-count="7">
-        <button type="button" onClick="{{ l.open }}" style="background:#fff;border:0;padding:28px;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:22px;font-family:var(--font-body);position:relative" style-hover="background:#F1F0ED">
-          <div style="aspect-ratio:4/5;background:{{ l.plateBg }};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;border:1px solid var(--hairline)">
-            <img src="assets/logos/isotype-black.svg" alt="" style="width:44px;height:44px;opacity:0.22">
-            <span style="font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:rgba(0,0,0,0.45)">Portrait pending</span>
-          </div>
-          <div>
-            <p style="margin:0 0 8px;font-family:var(--font-display);text-transform:uppercase;font-size:22px;line-height:1.0">{{ l.name }}</p>
-            <p style="margin:0 0 14px;font-size:14px;color:rgba(0,0,0,0.66)">{{ l.title }}</p>
-            <span style="font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:{{ l.badgeColor }}">{{ l.badge }}</span>
-          </div>
-          <span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;border-bottom:2px solid var(--unacem-red);padding-bottom:3px;align-self:flex-start">View profile →</span>
-        </button>
-      </sc-for>
+  <section style="padding:180px 80px clamp(88px,9vw,120px);background:#fff;position:relative;overflow:hidden">
+    <div style="max-width:1320px;margin-inline:auto">
+      <p style="margin:0 0 28px;font-family:var(--font-body);font-size:11.5px;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:var(--unacem-red)">Leadership · One company, one culture</p>
+      <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(64px,7vw,120px);align-items:end">
+        <h1 style="margin:0;font-family:var(--font-display);text-transform:uppercase;line-height:0.94;font-size:clamp(36px,4.6vw,78px)">Leadership<br>that builds<br><span style="color:var(--unacem-red)">with purpose</span></h1>
+        <p style="margin:0;max-width:56ch;font-size:17px;line-height:1.75;color:rgba(0,0,0,0.72)">A shared commitment to people, performance, integrity and sustainable growth guides how UNACEM North America moves forward.</p>
+      </div>
     </div>
   </section>
 
-  <section style="margin-top:120px;position:relative;height:70vh;overflow:hidden;background:#000">
+  <section style="padding:0 80px clamp(88px,9vw,120px);background:#fff">
+    <div style="max-width:1320px;margin-inline:auto;display:grid;grid-template-columns:5fr 7fr;gap:clamp(56px,6vw,96px);align-items:end;border-top:4px solid var(--unacem-red);padding-top:clamp(48px,5vw,72px)">
+      <div style="aspect-ratio:4/5;overflow:hidden;background:#F1F0ED">
+        <img src="assets/leadership/rafael-villalona.jpeg" alt="Rafael Villalona, Chief Executive Officer of UNACEM North America." style="width:100%;height:100%;object-fit:cover;object-position:50% 20%">
+      </div>
+      <div style="padding-bottom:clamp(16px,2vw,40px)">
+        <p style="margin:0 0 24px;font-family:var(--font-numeral);font-size:11.5px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--unacem-red)">01 · Chief executive</p>
+        <h2 style="margin:0 0 20px;font-family:var(--font-display);text-transform:uppercase;line-height:0.96;font-size:clamp(32px,3.6vw,56px)">Rafael Villalona</h2>
+        <p style="margin:0;font-family:var(--font-body);font-size:18px;letter-spacing:0.02em;color:rgba(0,0,0,0.72)">CEO</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:0 80px clamp(100px,10vw,150px);background:#fff">
+    <div style="max-width:1320px;margin-inline:auto">
+      <h2 style="margin:0 0 clamp(48px,5vw,72px);font-family:var(--font-display);text-transform:uppercase;font-size:clamp(20px,2vw,28px);line-height:1.02">Leadership team</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(40px,4vw,64px) clamp(32px,3vw,48px)">
+        <sc-for list="{{ leaders }}" as="l" hint-placeholder-count="5">
+          <article style="display:flex;flex-direction:column;gap:24px">
+            <div style="aspect-ratio:4/5;overflow:hidden;background:#F1F0ED;position:relative">
+              <sc-if value="{{ l.hasPhoto }}" hint-placeholder-val="{{ true }}">
+                <div role="img" aria-label="{{ l.alt }}" style="position:absolute;inset:0;background-color:#F1F0ED;background-image:{{ l.image }};background-size:cover;background-position:{{ l.position }}"></div>
+              </sc-if>
+              <sc-if value="{{ l.noPhoto }}">
+                <span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#000;font-family:var(--font-display);font-size:52px;letter-spacing:0.04em;color:#fff">{{ l.initials }}</span>
+              </sc-if>
+            </div>
+            <div>
+              <p style="margin:0 0 10px;font-family:var(--font-numeral);font-size:11px;letter-spacing:0.18em;color:var(--unacem-red)">{{ l.num }}</p>
+              <h3 style="margin:0 0 10px;font-family:var(--font-display);text-transform:uppercase;font-size:clamp(18px,1.6vw,23px);line-height:1.04">{{ l.name }}</h3>
+              <sc-if value="{{ l.hasTitle }}" hint-placeholder-val="{{ true }}">
+                <p style="margin:0;max-width:32ch;font-family:var(--font-body);font-size:15px;line-height:1.6;color:rgba(0,0,0,0.66)">{{ l.title }}</p>
+              </sc-if>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="ethics-and-integrity" data-screen-label="Ethics and integrity" style="padding:clamp(120px,12vw,180px) 80px;background:#000;color:#fff">
+    <div style="max-width:1320px;margin-inline:auto">
+      <div style="max-width:760px;margin-bottom:clamp(80px,8vw,120px)">
+        <p style="margin:0 0 28px;font-family:var(--font-body);font-size:11.5px;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:var(--unacem-red)">Ethics and integrity</p>
+        <h2 style="margin:0 0 32px;font-family:var(--font-display);text-transform:uppercase;line-height:0.94;font-size:clamp(28px,3.4vw,52px);color:#fff">Our commitment to<br><span style="color:var(--unacem-red)">ethics and integrity</span></h2>
+        <p style="margin:0;max-width:60ch;font-size:17px;line-height:1.75;color:rgba(255,255,255,0.74)">We are committed to maintaining a safe, confidential and impartial process for reporting misconduct.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(32px,3vw,56px);margin-bottom:clamp(96px,10vw,150px)">
+        <sc-for list="{{ commitments }}" as="c" hint-placeholder-count="4">
+          <div style="border-top:2px solid rgba(255,255,255,0.28);padding-top:28px">
+            <p style="margin:0 0 20px;font-family:var(--font-numeral);font-size:14px;letter-spacing:0.12em;color:var(--unacem-red)">{{ c.num }}</p>
+            <h3 style="margin:0 0 14px;font-family:var(--font-display);text-transform:uppercase;font-size:clamp(18px,1.7vw,24px);line-height:1.02;color:#fff">{{ c.name }}</h3>
+            <p style="margin:0;max-width:34ch;font-size:15px;line-height:1.7;color:rgba(255,255,255,0.7)">{{ c.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+
+      <h3 style="margin:0 0 clamp(48px,5vw,72px);font-family:var(--font-display);text-transform:uppercase;font-size:clamp(20px,2vw,28px);line-height:1.02;color:#fff">The process</h3>
+      <div style="position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(32px,3vw,56px)">
+        <span aria-hidden="true" style="position:absolute;left:0;right:0;top:11px;height:2px;background:rgba(255,255,255,0.24)"></span>
+        <span aria-hidden="true" style="position:absolute;left:0;top:11px;height:2px;width:100%;background:var(--unacem-red);transform:scaleX(0);transform-origin:left;animation:u-line 1400ms var(--ease-standard) both;animation-timeline:view();animation-range:entry 10% cover 45%"></span>
+        <sc-for list="{{ process }}" as="p" hint-placeholder-count="4">
+          <div style="padding-top:48px;position:relative;animation:u-rise 760ms cubic-bezier(0.22,1,0.36,1) {{ p.delay }} both;animation-timeline:view();animation-range:entry 4% entry 58%">
+            <span aria-hidden="true" style="position:absolute;top:4px;left:0;width:16px;height:16px;background:var(--unacem-red)"></span>
+            <p style="margin:0 0 16px;font-family:var(--font-numeral);font-size:13px;letter-spacing:0.12em;color:var(--unacem-red)">{{ p.num }}</p>
+            <h4 style="margin:0 0 14px;font-family:var(--font-display);text-transform:uppercase;font-size:clamp(17px,1.6vw,22px);line-height:1.02;color:#fff">{{ p.name }}</h4>
+            <p style="margin:0;max-width:32ch;font-size:15px;line-height:1.7;color:rgba(255,255,255,0.7)">{{ p.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="position:relative;height:70vh;overflow:hidden;background:#000">
     <img src="assets/photography/people-2-web.jpg" alt="UNACEM North America colleagues together at a company gathering." style="width:100%;height:100%;object-fit:cover">
     <div style="position:absolute;inset:0;background:rgba(0,0,0,0.45)"></div>
     <div style="position:absolute;left:80px;bottom:72px;right:80px;display:flex;align-items:flex-end;justify-content:space-between;gap:48px">
@@ -774,23 +920,6 @@ main h1,main h2,main h3,footer h2{animation:u-rise 760ms cubic-bezier(0.22,1,0.3
 </main>
 </sc-if>
 
-<sc-if value="{{ person }}">
-  <div onClick="{{ closePerson }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:120"></div>
-  <aside role="dialog" aria-modal="true" style="position:fixed;top:0;right:0;bottom:0;width:520px;background:#fff;z-index:121;padding:56px 48px;display:flex;flex-direction:column;gap:28px;border-left:4px solid var(--unacem-red);animation:u-rise 320ms cubic-bezier(0.22,1,0.36,1) both">
-    <button type="button" onClick="{{ closePerson }}" aria-label="Close profile" style="align-self:flex-end;width:44px;height:44px;border:1px solid var(--hairline);background:#fff;cursor:pointer;font-size:18px;font-family:var(--font-body)" style-hover="border-color:#000">✕</button>
-    <div style="aspect-ratio:4/5;max-height:300px;background:#F1F0ED;border:1px solid var(--hairline);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px">
-      <img src="assets/logos/isotype-black.svg" alt="" style="width:40px;height:40px;opacity:0.22">
-      <span style="font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:rgba(0,0,0,0.45)">Portrait pending</span>
-    </div>
-    <div>
-      <p style="margin:0 0 10px;font-family:var(--font-display);text-transform:uppercase;font-size:28px;line-height:1.0">{{ person.name }}</p>
-      <p style="margin:0 0 18px;font-size:15px;color:rgba(0,0,0,0.66)">{{ person.title }}</p>
-      <p style="margin:0 0 22px;font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:{{ person.badgeColor }}">{{ person.badge }}</p>
-      <p style="margin:0;font-size:17px;line-height:1.6;color:rgba(0,0,0,0.78)">{{ person.bio }}</p>
-    </div>
-  </aside>
-</sc-if>
-
 <footer style="background:#000;color:#fff;padding:130px 80px 0;position:relative;overflow:hidden">
   <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:80px;align-items:end;margin-bottom:110px">
     <h2 style="margin:0;font-family:var(--font-display);text-transform:uppercase;line-height:0.94;font-size:clamp(28px,3.2vw,50px);color:#fff">A reliable partner<br>for high-performance<br><span style="color:var(--unacem-red)">building materials</span></h2>
@@ -824,9 +953,16 @@ main h1,main h2,main h3,footer h2{animation:u-rise 760ms cubic-bezier(0.22,1,0.3
   <img src="assets/graphics/edifications-red.svg" alt="" style="display:block;width:100%;height:150px;object-fit:cover;object-position:left bottom;animation:u-wipe 900ms cubic-bezier(0.22,1,0.36,1) both;animation-timeline:view();animation-range:entry 0% cover 40%">
 </footer>
 
+<button type="button" class="u-top {{ topClass }}" aria-label="Back to top" title="Back to top" onClick="{{ backToTop }}">
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+    <path d="M12 20 V5"></path>
+    <path d="M5 12 L12 5 L19 12"></path>
+  </svg>
+</button>
+
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;showPlaceholderBadges&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Prototype&quot;},&quot;chapterTransitions&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Prototype&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;chapterTransitions&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Prototype&quot;}}">
 const RED = '#FF0000';
 
 const NEWS = [
@@ -844,15 +980,27 @@ const NEWS = [
     cta: 'View leadership →', href: '#/leadership' }
 ];
 
+/* Publication order is fixed: Rafael Villalona opens the page as the CEO card,
+   Dania Heredia leads the team grid. Only client-confirmed titles are shown —
+   `title: ''` renders no title line, ready to fill in later.
+   The unidentified portrait stays unpublished until a name and title arrive. */
 const LEADERS = [
-  { name: 'Dania Heredia', title: 'Chief Legal & Corporate Affairs Officer', real: true,
-    bio: 'Dania Heredia serves as Chief Legal & Corporate Affairs Officer at UNACEM North America.' },
-  { name: 'Adrian Cole', title: 'Chief Executive Officer' },
-  { name: 'Elena Torres', title: 'Chief Operating Officer' },
-  { name: 'Michael Grant', title: 'Chief Financial Officer' },
-  { name: 'Priya Shah', title: 'Chief People Officer' },
-  { name: 'Jordan Hayes', title: 'Chief Commercial Officer' },
-  { name: 'Isabel Romero', title: 'VP, Sustainability & Environment' }
+  { name: 'Rafael Villalona', title: 'CEO',
+    image: 'assets/leadership/rafael-villalona.jpeg', position: '50% 20%', featured: true, published: true },
+  { name: 'Dania Heredia', title: 'Chief Legal & Corporate Affairs Officer',
+    image: 'assets/leadership/dania-heredia.png', position: '50% 18%', published: true },
+  { name: 'Ignacio Martinelli', title: 'Finance',
+    image: 'assets/leadership/ignacio-martinelli.png', position: '50% 15%', published: true },
+  { name: 'José de la Cerda', title: 'Strategic Planning',
+    /* source upload has an accented filename the file layer rejects —
+       re-upload as jose-de-la-cerda.png to fill this slot */
+    image: 'assets/leadership/jose-de-la-cerda.png', position: '50% 20%', published: true },
+  { name: 'Jason Marchal', title: 'IT',
+    image: 'assets/leadership/jason-marchal.jpg', position: '50% 25%', published: true },
+  { name: 'Jade Stout', title: 'Human Resources',
+    image: 'assets/leadership/jade-stout.jpg', position: '50% 18%', published: true },
+  { name: '', title: '',
+    image: 'assets/leadership/leadership-unconfirmed.png', published: false }
 ];
 
 const REGIONS = {
@@ -1008,29 +1156,53 @@ const PRODUCT_PREVIEWS = {
 
 /* Sustainability visuals — assets/sustainability/ */
 const SUS_DEFAULT = { key: 'default', src: 'assets/sustainability/sustainability-default.jpg', position: '50% 50%', label: 'Concrete and nature', alt: 'Concrete architecture opening onto trees and natural light' };
+/* sustainability-water.png stays available as an alternate; it is not a seventh pillar */
 const SUS_VISUALS = {
-  'carbon-footprint': { src: 'assets/sustainability/sustainability-carbon-footprint.png', position: '50% 50%', label: 'Carbon footprint', alt: 'Cement plant with wind turbines and solar panels alongside' },
-  'fuel-use': { src: 'assets/sustainability/sustainability-fuel-use.png', position: '50% 50%', label: 'Fuel use', alt: 'Biomass and alternative fuel being delivered into a cement operation' },
-  'biodiversity': { src: 'assets/sustainability/sustainability-biodiversity.png', position: 'center', label: 'Biodiversity', alt: 'Plant integrated with vegetation, water and local wildlife' },
-  'water': { src: 'assets/sustainability/sustainability-water.png', position: '50% 62%', label: 'Water', alt: 'Water treatment and clarifier basins beside plant operations' },
-  'energy': { src: 'assets/sustainability/sustainability-energy.png', position: '50% 50%', label: 'Energy', alt: 'Operators monitoring energy performance beside equipment and solar panels' }
+  'products': { src: 'assets/products/hero-hover/product-pozzolan-hover.jpeg', position: '50% 50%', label: 'More sustainable products', alt: 'Volcanic pozzolan and mineral materials used in lower-carbon cement' },
+  'operations': { src: 'assets/sustainability/sustainability-fuel-use.png', position: '50% 50%', label: 'Cleaner operations', alt: 'Biomass and alternative fuel handled within a cement operation' },
+  'circular': { src: 'assets/products/hero-hover/product-aggregates-hover.jpeg', position: '50% 55%', label: 'Circular economy', alt: 'Aggregates and recovered quarry material ready for reuse' },
+  'environment': { src: 'assets/sustainability/sustainability-biodiversity.png', position: 'center', label: 'Water, air & biodiversity', alt: 'Plant integrated with vegetation, water and local wildlife' },
+  'innovation': { src: 'assets/sustainability/sustainability-energy.png', position: '50% 50%', label: 'Innovation & partnerships', alt: 'Operators monitoring plant technology beside equipment and solar panels' },
+  'green': { src: 'assets/sustainability/sustainability-carbon-footprint.png', position: '50% 50%', label: 'Green economy', alt: 'Cement plant alongside wind turbines and solar generation' }
 };
 
 const PILLARS = [
-  { key: 'carbon-footprint', num: '01', name: 'Carbon footprint', body: 'Advancing toward carbon neutrality by 2050 through lower clinker use, recycled materials and cleaner production alternatives' },
-  { key: 'fuel-use', num: '02', name: 'Fuel use', body: 'Exploring renewable biomass and alternative fuels to reduce dependence on conventional fuels and improve process efficiency' },
-  { key: 'biodiversity', num: '03', name: 'Biodiversity', body: 'Integrating environmental responsibility into the management of operations, surrounding land and local ecosystems' },
-  { key: 'water', num: '04', name: 'Water', body: 'Using water responsibly and monitoring consumption to improve efficiency across operations' },
-  { key: 'energy', num: '05', name: 'Energy', body: 'Improving energy performance through modern equipment, operational monitoring and more efficient production systems' }
+  { key: 'products', num: '01', name: 'More sustainable products', body: 'Increasing pozzolan and other low-carbon materials in our cement.' },
+  { key: 'operations', num: '02', name: 'Cleaner operations', body: 'Greater use of alternative fuels, like biomass, and reduced reliance on fossil fuels.' },
+  { key: 'circular', num: '03', name: 'Circular economy', body: 'Recycled aggregates in ready-mix concrete and reuse of materials once discarded at our quarries.' },
+  { key: 'environment', num: '04', name: 'Water, air & biodiversity', body: 'Meeting and improving on our environmental permits, plus partnerships to protect forests and wildlife.' },
+  { key: 'innovation', num: '05', name: 'Innovation & partnerships', body: 'New technologies, like waste heat recovery, and collaboration with communities and environmental organizations.' },
+  { key: 'green', num: '06', name: 'Green economy', body: 'Working alongside industry and policymakers to advance lower-carbon cements across the sector.' }
+];
+
+const COMMITMENTS = [
+  { num: '01', name: 'Provide', body: 'A safe, confidential space for reporting misconduct.' },
+  { num: '02', name: 'Investigate', body: 'All reported incidents with strict impartiality.' },
+  { num: '03', name: 'Protect', body: 'From any form of retaliation.' },
+  { num: '04', name: 'Uphold', body: 'Our company values, policies, and legal compliance.' }
+];
+
+const PROCESS = [
+  { num: '01', name: 'Intake', body: 'Report received via secure, anonymous channels.' },
+  { num: '02', name: 'Triage', body: 'Committee reviews the reports.' },
+  { num: '03', name: 'Fact-finding', body: 'Neutral interviews and evidence gathering.' },
+  { num: '04', name: 'Resolution', body: 'Final decision and corrective action implemented.' }
+];
+
+const STAGES = [
+  { key: 'crm', num: '01', name: 'CRM', body: 'A centralized platform that gives our teams a complete view of each customer relationship, from inquiry to after-sales support.' },
+  { key: 'service-centers', num: '02', name: 'Service centers', body: 'The direct line between customers and our operations — handling orders, technical questions, and support requests.' },
+  { key: 'satisfaction', num: '03', name: 'Customer satisfaction', body: 'We regularly measure satisfaction and use that feedback to improve our products, service, and communication.' }
 ];
 
 const CATEGORIES = ['All', 'Business', 'Sustainability', 'Leadership', 'Community', 'Operations'];
 
 class Component extends DCLogic {
   state = {
-    route: 'home', slug: null, region: 'arizona', person: null,
+    route: 'home', slug: null, region: 'arizona',
     filter: 'All', query: '', year: 'All years', hash: '',
-    heroIndex: 0, heroPlaying: true, hoveredProduct: null, hoveredPillar: null, brokenImages: {},
+    heroIndex: 0, heroPlaying: true, hoveredProduct: null, hoveredPillar: null, hoveredStage: null, brokenImages: {},
+    pastHero: false, stripHeight: 210,
     contact: { name: '', company: '', email: '', phone: '', state: 'Arizona', reason: 'General question', product: 'Cement', message: '', consent: false, error: '', sent: false, badField: '' },
     form: { first: '', last: '', email: '', interest: 'Company news', consent: false, error: '', sent: false }
   };
@@ -1096,23 +1268,42 @@ class Component extends DCLogic {
     else if (this.state.heroPlaying) { const p = v.play(); if (p && p.catch) p.catch(() => {}); }
   };
 
+  measureStrip = () => {
+    const h = this.strip ? Math.round(this.strip.getBoundingClientRect().height) : 0;
+    if (h && h !== this.state.stripHeight) this.setState({ stripHeight: h });
+  };
+
+  onScroll = () => {
+    const past = window.scrollY > window.innerHeight * 0.7;
+    if (past !== this.state.pastHero) this.setState({ pastHero: past });
+  };
+
+  backToTop = () => {
+    window.scrollTo({ top: 0, behavior: this.heroReduced ? 'auto' : 'smooth' });
+  };
+
   componentDidMount() {
     this.sync();
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('resize', this.measureStrip);
+    this.onScroll();
+    this.measureStrip();
+    window.setTimeout(this.measureStrip, 400);
     if (!this.heroReduced) {
       window.setTimeout(this.heroSyncVideos, 60);
       if (this.heroActiveSlides.length > 1) this.heroRaf = window.requestAnimationFrame(this.heroTick);
       document.addEventListener('visibilitychange', this.onVisibility);
       window.setTimeout(() => {
-        const watch = (key, src) => { const im = new Image(); im.onerror = this.markBroken(key); im.src = src; };
-        Object.keys(PRODUCT_PREVIEWS).forEach(k => watch(k, PRODUCT_PREVIEWS[k].src));
-        Object.keys(SUS_VISUALS).forEach(k => watch(k, SUS_VISUALS[k].src));
-        watch('default', SUS_DEFAULT.src);
+        const watch = (key, src) => { const im = new Image(); if (key) im.onerror = this.markBroken(key); im.src = src; };
+        Object.keys(PRODUCT_PREVIEWS).forEach(k => watch(null, PRODUCT_PREVIEWS[k].src));
+        Object.keys(SUS_VISUALS).forEach(k => watch(null, SUS_VISUALS[k].src));
+        watch(null, SUS_DEFAULT.src);
+        LEADERS.filter(l => l.published).forEach(l => watch('leader:' + l.name, l.image));
       }, 1200);
     } else {
       this.setState({ heroPlaying: false });
     }
     window.addEventListener('hashchange', this.sync);
-    window.addEventListener('keydown', this.onKey);
     this.videoKeepAlive = window.setInterval(() => {
       document.querySelectorAll('video').forEach(v => {
         v.loop = true; v.muted = true;
@@ -1123,13 +1314,12 @@ class Component extends DCLogic {
   }
   componentWillUnmount() {
     window.removeEventListener('hashchange', this.sync);
-    window.removeEventListener('keydown', this.onKey);
     window.clearInterval(this.videoKeepAlive);
+    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('resize', this.measureStrip);
     if (this.heroRaf) window.cancelAnimationFrame(this.heroRaf);
     document.removeEventListener('visibilitychange', this.onVisibility);
   }
-
-  onKey = (e) => { if (e.key === 'Escape' && this.state.person) this.setState({ person: null }); };
 
   sync = () => {
     const h = (window.location.hash || '').replace(/^#\/?/, '');
@@ -1147,6 +1337,7 @@ class Component extends DCLogic {
           if (el) { window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 130, behavior: 'smooth' }); return; }
         }
         if (!anchor) window.scrollTo({ top: 0 });
+        this.onScroll();
       }, 90);
     });
   };
@@ -1159,8 +1350,8 @@ class Component extends DCLogic {
   markBroken = (key) => () => this.setState(s => ({ brokenImages: Object.assign({}, s.brokenImages, { [key]: true }) }));
 
   /* hover intent: 100ms so a fast sweep across the strip doesn't flicker */
-  productEnter = (key) => () => {
-    if (!this.canHover) return;
+  productEnter = (key, viaPointer) => () => {
+    if (viaPointer && !this.canHover) return;
     window.clearTimeout(this.productTimer);
     this.productTimer = window.setTimeout(() => {
       if (this.state.hoveredProduct === null) {
@@ -1186,6 +1377,9 @@ class Component extends DCLogic {
 
   pillarEnter = (key) => () => this.setState({ hoveredPillar: key });
   pillarLeave = () => this.setState({ hoveredPillar: null });
+
+  stageEnter = (i) => () => this.setState({ hoveredStage: i });
+  stageLeave = () => this.setState({ hoveredStage: null });
 
   go = (region) => () => this.setState({ region });
 
@@ -1242,8 +1436,7 @@ class Component extends DCLogic {
   };
 
   renderVals() {
-    const { route, region, person, filter, query, year, form } = this.state;
-    const showBadges = this.props.showPlaceholderBadges ?? true;
+    const { route, region, filter, query, year, form } = this.state;
     const chapterTone = this.props.chapterTransitions ?? true;
 
     const hash = this.state.hash;
@@ -1259,7 +1452,11 @@ class Component extends DCLogic {
       const active = anchorNav
         ? (route === 'home' && hash === n.key)
         : (n.key === route || (route === 'article' && n.key === 'news')) && !(route === 'home' && hash);
-      return Object.assign({}, n, { color: active ? RED : '#000', underline: active ? 'scaleX(1)' : 'scaleX(0)' });
+      return Object.assign({}, n, {
+        underline: active ? 'scaleX(1)' : 'scaleX(0)',
+        weight: active ? 700 : 500,
+        current: active ? 'page' : 'false'
+      });
     });
 
     const r = REGIONS[region];
@@ -1305,6 +1502,11 @@ class Component extends DCLogic {
 
       yes: true,
       zero: 0,
+      scrollCueClass: this.state.pastHero ? 'is-hidden' : '',
+      scrollCueBottom: (this.state.stripHeight + 32) + 'px',
+      stripRef: (el) => { this.strip = el; if (el) window.requestAnimationFrame(this.measureStrip); },
+      topClass: this.state.pastHero ? 'is-visible' : '',
+      backToTop: this.backToTop,
       productLeave: this.productLeave,
       pillarLeave: this.pillarLeave,
       heroPreviews: Object.keys(PRODUCT_PREVIEWS).map(k => {
@@ -1316,16 +1518,30 @@ class Component extends DCLogic {
           transform: on ? 'scale(1.015)' : 'scale(1)'
         };
       }),
-      pillarVisuals: [SUS_DEFAULT].concat(Object.keys(SUS_VISUALS).map(k => Object.assign({ key: k }, SUS_VISUALS[k]))).map(v => {
-        const active = v.key === 'default'
-          ? (!this.state.hoveredPillar || this.state.brokenImages[this.state.hoveredPillar])
-          : (this.state.hoveredPillar === v.key && !this.state.brokenImages[v.key]);
+      pillarVisuals: [SUS_DEFAULT].concat(Object.keys(SUS_VISUALS).map(k => Object.assign({}, SUS_VISUALS[k], { key: k }))).map(v => {
+        const hov = this.state.hoveredPillar;
+        const active = v.key === 'default' ? !hov : hov === v.key;
         return {
+          key: v.key,
           image: 'url(' + v.src + ')', alt: v.alt, position: v.position,
           opacity: active ? 1 : 0,
           transform: active ? 'scale(1)' : 'scale(1.02)'
         };
       }),
+      stages: STAGES.map((s, i) => {
+        const on = this.state.hoveredStage === i;
+        return Object.assign({}, s, {
+          enter: this.stageEnter(i),
+          ring: on ? RED : 'var(--hairline-strong)',
+          fill: on ? RED : '#FFFFFF',
+          numColor: on ? '#FFFFFF' : '#000000'
+        });
+      }),
+      stageLeave: this.stageLeave,
+      stageLineWidth: this.state.hoveredStage == null ? '0%' : ((this.state.hoveredStage + 1) / STAGES.length * 100) + '%',
+      commitments: COMMITMENTS,
+      process: PROCESS.map((p, i) => Object.assign({}, p, { delay: (80 + i * 110) + 'ms' })),
+
       pillarLabel: (this.state.hoveredPillar && SUS_VISUALS[this.state.hoveredPillar] && !this.state.brokenImages[this.state.hoveredPillar])
         ? SUS_VISUALS[this.state.hoveredPillar].label : SUS_DEFAULT.label,
       heroReplay: this.heroReplay,
@@ -1343,7 +1559,10 @@ class Component extends DCLogic {
         poster: s.poster,
         preload: i === 0 ? 'auto' : 'metadata',
         opacity: i === this.state.heroIndex ? 1 : 0,
-        setRef: (el) => { this.heroVideos[i] = el; }
+        setRef: (el) => {
+          this.heroVideos[i] = el;
+          if (el && el.getAttribute('src') !== s.video) el.setAttribute('src', s.video);
+        }
       })),
       hero: (() => {
         const s = this.heroActiveSlides[this.state.heroIndex] || heroSlides[0];
@@ -1360,7 +1579,8 @@ class Component extends DCLogic {
         const on = this.state.hoveredProduct === p.key;
         return Object.assign({}, p, {
           divider: i === 0 ? 'transparent' : 'var(--hairline)',
-          enter: this.productEnter(p.key),
+          hoverEnter: this.productEnter(p.key, true),
+          focusEnter: this.productEnter(p.key, false),
           topLine: on ? RED : 'transparent',
           bg: on ? '#FFFFFF' : 'transparent',
           weight: on ? 700 : 400,
@@ -1419,6 +1639,7 @@ class Component extends DCLogic {
       productChapters: PRODUCTS.map(p => {
         const red = chapterTone && p.opening === 'red';
         return Object.assign({}, p, {
+          setVideo: (el) => { if (el && el.getAttribute('src') !== p.video) el.setAttribute('src', p.video); },
           openingBg: red ? RED : '#FFFFFF',
           openingFg: red ? '#FFFFFF' : '#000000',
           numColor: red ? '#FFFFFF' : RED,
@@ -1432,23 +1653,21 @@ class Component extends DCLogic {
         { need: 'Base, grading, concrete production and drainage', rec: 'Aggregates', href: '#/products/aggregates' }
       ].map((c, i) => Object.assign({}, c, { rot: i * 90, delay: (80 + i * 90) + 'ms' })),
 
-      leaders: LEADERS.map((l, i) => ({
-        name: l.name,
-        title: l.title,
-        plateBg: i % 3 === 1 ? '#F1F0ED' : '#FFFFFF',
-        badge: showBadges ? (l.real ? 'Verified title' : 'Fictional placeholder — replace before launch') : '',
-        badgeColor: l.real ? 'rgba(0,0,0,0.5)' : RED,
-        open: () => this.setState({
-          person: {
-            name: l.name, title: l.title,
-            badge: l.real ? 'Verified title' : 'Fictional placeholder — replace before launch',
-            badgeColor: l.real ? 'rgba(0,0,0,0.5)' : RED,
-            bio: l.bio || 'Biography pending official approval.'
-          }
-        })
-      })),
-      person,
-      closePerson: () => this.setState({ person: null }),
+      leaders: LEADERS.filter(l => l.published && !l.featured).map((l, i) => {
+        const broken = this.state.brokenImages['leader:' + l.name];
+        return {
+          name: l.name,
+          title: l.title,
+          hasTitle: !!l.title,
+          num: this.pad(i + 2),
+          image: 'url(' + l.image + ')',
+          position: l.position || '50% 20%',
+          alt: l.name + (l.title ? ', ' + l.title + ' at UNACEM North America' : ' at UNACEM North America'),
+          hasPhoto: !broken,
+          noPhoto: !!broken,
+          initials: l.name.split(/\s+/).filter(w => w && w[0] === w[0].toUpperCase()).map(w => w[0]).slice(0, 2).join('')
+        };
+      }),
 
       sliderRef: (el) => { this.slider = el; },
       slidePrev: this.slideBy(-1),
